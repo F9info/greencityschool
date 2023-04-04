@@ -1,0 +1,9 @@
+import "./bootstrap";
+import "admin-lte";
+import "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";
+import "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js";
+import "https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js";
+import "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js";
+import "https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js";
+import "./jquery-key-restrictions.min";
+import "./custom";

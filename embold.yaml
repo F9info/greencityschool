@@ -1,0 +1,8 @@
+version: 1
+sources:
+exclusions:
+'node_modules'
+'.git' 
+'routes'
+'tests'
+'vendor'
