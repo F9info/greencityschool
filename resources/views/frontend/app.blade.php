@@ -187,8 +187,7 @@
                                                         <a class="youtube"
                                                             href="{{ applicationSettings('youtube') }}"
                                                             target="_blank"><i class="fab fa-youtube"></i></a>
-                                                    @endif
-                                        </div>
+                                                    @endif                                        </div>
                                     </div>
                                 </div>
                             </div>
