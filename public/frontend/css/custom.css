@@ -1,3 +1,5 @@
+.no-need-remove, body .no-need-remove{display: none !important}
+
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 .slick-arrow{position: absolute; top: 50%;}
 .home_page_slider .item {position: relative; max-height:100vh ;}
@@ -60,3 +62,32 @@ padding: 8px 0 0px 0;
 .calendar-item{position: relative; top: -100px; margin-bottom: -100px;}
 .fc-event{    background-color: #0f6600;}
 .fc-event span{color: #ffffff;}
+
+#mainMenu nav > ul > li .dropdown-menu::before{
+    content: "";
+    position: absolute;
+    left: 30px;
+    top: -20px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid #ffffff;
+
+}
+
+#mainMenu nav > ul > li .dropdown-menu .dropdown-menu::before{display: none !important;}
+
+.home_events_slider  .inner{margin: 150px 15px 0 15px;}
+.home_events_slider .post-item .post-image{top: -100px; margin: 0 25px -100px 25px;}
+.home_events_slider .post-item .post-image figure{border-radius: 15px; overflow: hidden; border: solid 1px #0F6600;}
+.home_events_slider  .post-item .post-item-description{text-align: left; padding: 10px 25px 25px 25px;}
+.home_events_slider  .post-item .post-item-description .disc{margin-bottom: 30px;}
+.home_events_slider .date_event{margin-bottom: 30px;}
+.home_events_slider .date_event .material-symbols-outlined{display: inline-block; vertical-align: top;color: #0F6600; margin-right: 15px;}
+.home_events_slider .readmore.fright{float: right ;}
+.readmore{color: #0F6600;     font-weight: bold;}
+.slick-dots {margin: 0; padding: 0; list-style: none;}
+.slick-dots li{display: inline-block; margin: 0 5px;}
+.slick-dots li button{width: 15px; height: 15px; border-radius: 100%; background: #eeeeee; font-size: 0 !important; border: solid 1px #0F6600; box-shadow: none;}
+.slick-dots li.slick-active button{background: #0F6600 !important;}

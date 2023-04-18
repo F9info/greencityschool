@@ -173,11 +173,11 @@
                                 </ul>
                             </div>
                         </div>
-               
-                    <div class="col-md-8">
-                        <div id="calendar"></div>
+
+                        <div class="col-md-8">
+                            <div id="calendar"></div>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -187,41 +187,50 @@
     <section class="home_events text-center home_page_events event_lists ">
         <div class="container">
             <div class="inner">
-                <h2 class="home-title">Latest Events</h2>
+                <h2 class="h1 home-title m-b-90">Latest Events</h2>
                 @if ($events->count() > 0)
                     <div class="home_events_slider">
                         @foreach ($events as $event)
                             <!-- Post item-->
-                            <div class="post-item shadow">
-                                <div class="post-item-wrap">
-                                    <div class="post-image">
-                                        <a href="{{ url('event/' . $event->slug) }}">
-                                            <figure>
-                                                <img alt="" src="{{ asset('images/events/' . $event->image) }}">
-                                            </figure>
-                                        </a>
-                                        <span class="post-meta-category"><a
-                                                href="">{{ $event->eventCategory->name }}</a></span>
+                            <div class="post-item ">
+                                <div class="inner shadow">
+
+                                    <div class="post-item-wrap">
+                                        <div class="post-image">
+                                            <a href="{{ url('event/' . $event->slug) }}">
+                                                <figure>
+                                                    <img alt=""
+                                                        src="{{ asset('images/events/' . $event->image) }}">
+                                                </figure>
+                                            </a>
+                                            <span class="post-meta-category no-need-remove"><a
+                                                    href="">{{ $event->eventCategory->name }}</a></span>
+                                        </div>
+                                        <div class="post-item-description">
+                                            <h2><a href="{{ url('event/' . $event->slug) }}">{{ $event->event_name }}</a>
+                                            </h2>
+                                            <div class="disc">
+                                                {!! \Illuminate\Support\Str::limit(strip_tags($event->event_description), $limit = 170, $end = '...') !!}
+                                            </div>
+                                            <div class="date_event no-need-remove">
+                                                <span class="material-symbols-outlined">
+                                                    event
+                                                </span>
+                                                {{ date('D d M Y', strtotime($event->start_date)) . ' to ' . date('D d M Y', strtotime($event->end_date)) }}
+                                            </div>
+                                            <div class="buttons">
+
+                                                <div class="no-need-remove">
+                                                    @include('pages.event-register-btn', ['event', $event])
+                                                </div>
+
+                                                <a href="{{ url('event/' . $event->slug) }}" class="readmore"
+                                                    tabindex="0">Read More</a>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="post-item-description">
-                                        <h2><a href="{{ url('event/' . $event->slug) }}">{{ $event->event_name }}</a>
-                                        </h2>
-                                        <div class="disc">
-                                            {!! \Illuminate\Support\Str::limit(strip_tags($event->event_description), $limit = 120, $end = '...') !!}
-                                        </div>
-                                        <div class="date_event">
-                                            <span class="material-symbols-outlined">
-                                                event
-                                            </span>
-                                            {{ date('D d M Y', strtotime($event->start_date)) . ' to ' . date('D d M Y', strtotime($event->end_date)) }}
-                                        </div>
-                                        <div class="buttons">
-                                            @include('pages.event-register-btn', ['event', $event])
-                                            <a href="{{ url('event/' . $event->slug) }}" class="readmore fright"
-                                                tabindex="0">Read More</a>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <!-- end: Post item-->
@@ -234,7 +243,7 @@
         </div>
     </section>
     <!--------------------------- home_news --------------------------->
-    <section class="home_events home_news text-center">
+    <section class="no-need-remove">
         <div class="container">
             <h2 class="home-title">NEWS</h2>
             <div class="home_events_slider ">
@@ -268,8 +277,56 @@
             </div>
         </div>
     </section>
-    <!--------------------------- sponser-block --------------------------->
-    @include('pages.sponsors')
+
+
+   <!--------------------------- Video --------------------------->
+    <section id="image-block" class="image-block no-padding">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 no-padding" >
+
+
+                    <div class="post-video">
+                        <iframe width="100%" height="609px" src="https://www.youtube.com/embed/dA8Smj5tZOQ" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+
+
+
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="page-titile h1">What People Say</h2>
+
+
+<div class="single-slider testimonials">
+
+    <div class="item">
+        <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor.</div>
+        <h5>Beautiful nature</h5>
+        <h6>justo</h6>
+    </div>
+    <div class="item">
+        <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor.</div>
+        <h5>Beautiful nature</h5>
+        <h6>justo</h6>
+    </div>
+    <div class="item">
+        <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor.</div>
+        <h5>Beautiful nature</h5>
+        <h6>justo</h6>
+    </div>
+
+</div>
+
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+   <!--------------------------- home-galley --------------------------->
+
     <!--------------------------- home-galley --------------------------->
     <section class="home-galley text-center">
         <div class="container">
@@ -302,40 +359,4 @@
             @endif
         </div>
     </section>
-    <!--------------------------- subscribe_block --------------------------->
-    @include('pages.subscribe')
-    <!--------------------------- media-partners-block --------------------------->
-    @include('pages.media-partners')
-    <!--------------------------- end --------------------------->
-    @if (session('memberId'))
-        <!-- Modal -->
-        <div id="modal-auto-open" class="modal modal-auto-open text-center cookie-notify" data-delay="500"
-            data-cookie-enabled="false">
-            <span class="material-symbols-outlined colorgreen" style=" font-size:5em;">
-                check_circle
-            </span>
-            <h2 class="modal-title">Member Registration Successful</h2>
-            <p>
-                Thank you for registering as a member of F9 Info Technologies.<br>
-                <b>Your membership Id is: <span style="color: #eb6001;">{{ session('memberId') }}</span><br>
-                    A confirmation email has been sent to your email address.
-            </p>
-            <a class="btn btn-primary modal-close" href="#">Dismiss</a>
-        </div>
-    @endif
-    @if (session('eventregistration'))
-        <!-- Modal -->
-        <div id="modal-auto-open" class="modal modal-auto-open text-center cookie-notify" data-delay="500"
-            data-cookie-enabled="false">
-            <span class="material-symbols-outlined colorgreen" style=" font-size:5em;">
-                check_circle
-            </span>
-            <h2 class="modal-title">Event Registration Successful</h2>
-            <p>
-                Thank you for event registration.<br>
-                A confirmation email has been sent to your email address.
-            </p>
-            <a class="btn btn-primary modal-close" href="#">Dismiss</a>
-        </div>
-    @endif
 @endsection
