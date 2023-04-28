@@ -29,12 +29,12 @@ class PhotoGalleryCategory extends Model
 
     public static $rules = [
         'name' => 'required|unique:photo_gallery_categories',
-        'year' => 'required'
+     
     ];
 
     public static $update_rules = [
         'name' => 'required',
-        'year' => 'required'
+   
     ];
 
     public function photoGalleries()

@@ -163,17 +163,11 @@
                                     <li><a href="#">Annual day celebration</a></li>
                                     <li><a href="#">Picnic</a></li>
                                     <li><a href="#">Sports day</a></li>
-
                                     <li><a href="#">Visiting Museums and Monuments</a></li>
                                     <li><a href="#">Treasure hunt</a></li>
-
-
-
-
                                 </ul>
                             </div>
                         </div>
-
                         <div class="col-md-8">
                             <div id="calendar"></div>
                         </div>
@@ -194,7 +188,6 @@
                             <!-- Post item-->
                             <div class="post-item ">
                                 <div class="inner shadow">
-
                                     <div class="post-item-wrap">
                                         <div class="post-image">
                                             <a href="{{ url('event/' . $event->slug) }}">
@@ -219,18 +212,15 @@
                                                 {{ date('D d M Y', strtotime($event->start_date)) . ' to ' . date('D d M Y', strtotime($event->end_date)) }}
                                             </div>
                                             <div class="buttons">
-
                                                 <div class="no-need-remove">
                                                     @include('pages.event-register-btn', ['event', $event])
                                                 </div>
-
                                                 <a href="{{ url('event/' . $event->slug) }}" class="readmore"
                                                     tabindex="0">Read More</a>
                                                 <div class="clear"></div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <!-- end: Post item-->
@@ -277,86 +267,201 @@
             </div>
         </div>
     </section>
-
-
-   <!--------------------------- Video --------------------------->
-    <section id="image-block" class="image-block no-padding">
+    <!--------------------------- Video --------------------------->
+    <section id="image-block" class="testimonials image-block no-padding">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 no-padding" >
-
-
+                <div class="col-lg-6 no-padding">
                     <div class="post-video">
-                        <iframe width="100%" height="609px" src="https://www.youtube.com/embed/dA8Smj5tZOQ" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="100%" height="609px" src="https://www.youtube.com/embed/dA8Smj5tZOQ"
+                            frameborder="0" allowfullscreen></iframe>
                     </div>
-
-
-
-
                 </div>
-                <div class="col-lg-6">
-                    <h2 class="page-titile h1">What People Say</h2>
-
-
-<div class="single-slider testimonials">
-
-    <div class="item">
-        <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor.</div>
-        <h5>Beautiful nature</h5>
-        <h6>justo</h6>
-    </div>
-    <div class="item">
-        <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor.</div>
-        <h5>Beautiful nature</h5>
-        <h6>justo</h6>
-    </div>
-    <div class="item">
-        <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel dolor.</div>
-        <h5>Beautiful nature</h5>
-        <h6>justo</h6>
-    </div>
-
-</div>
-
-                   
+                <div class="col-lg-6 background-image-overflow"
+                    style="background-image: url({{ asset('images/school-bg.jpeg') }})">
+                    <h2 class="page-titile h1 text-light">What People Say</h2>
+                    <div class="single-slider  text-light">
+                        <div class="item">
+                            <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia
+                                faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat
+                                magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi
+                                diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel
+                                dolor.</div>
+                            <h5>Author</h5>
+                            <h6>Beautiful nature</h6>
+                        </div>
+                        <div class="item">
+                            <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia
+                                faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat
+                                magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi
+                                diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel
+                                dolor.</div>
+                            <h5>Author</h5>
+                            <h6>Beautiful nature</h6>
+                        </div>
+                        <div class="item">
+                            <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia
+                                faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat
+                                magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi
+                                diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel
+                                dolor.</div>
+                            <h5>Author</h5>
+                            <h6>Beautiful nature</h6>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-   <!--------------------------- home-galley --------------------------->
-
+    <!--------------------------- home-galley --------------------------->
     <!--------------------------- home-galley --------------------------->
     <section class="home-galley text-center">
-        <div class="container">
-            <h2 class="home-title">Events Gallery</h2>
+        <div class="container-fluid">
+            <h2 class="page-title h1 m-b-70">Gallery</h2>
             @if ($photoCategories != '')
-                <div class="home-photo-gallery">
-                    @foreach ($photoCategories as $photoCategory)
-                        @if ($photoCategory->activePhotoGalleries->count() > 0)
-                            <div class="row justify-content-center">
-                                @foreach ($photoCategory->activePhotoGalleries as $gallery)
-                                    <div class="col-lg-4 block">
-                                        <div class="card">
-                                            <figure> <img class="card-img-top"
-                                                    src="{{ asset('images/gallery/' . $gallery->image) }}"
-                                                    alt="">
-                                            </figure>
-                                            <div class="card-body-01">
-                                                <h5 class="card-title">{{ $gallery->title }}</h5>
-                                                <a href="{{ $gallery->image_url }}" class="btn btn-primary btn-xs"
-                                                    target="_blank">View Photos</a>
-                                            </div>
+                @foreach ($photoCategories as $photoCategory)
+                    @if ($photoCategory->activePhotoGalleries->count() > 0)
+                        <div class="photo-gallery">
+                            <div class="gall-block">
+                                <!-- portfolio item -->
+                                <div class="grid-layout grid-4-columns" data-item="grid-item" data-margin="30"
+                                    data-lightbox="gallery">
+                                    @foreach ($photoCategory->activePhotoGalleries as $gallery)
+                                        <div class="grid-item ">
+                                            <figure><img src="{{ asset('images/gallery/' . $gallery->image) }}"
+                                                    alt="{{ $gallery->title }}"></figure>
+                                                    <div class="gallery-buttons">
+                                            <a title="{{ $gallery->title }}" data-lightbox="gallery-image"
+                                                href="{{ asset('images/gallery/' . $gallery->image) }}"><i
+                                                    class="icon-maximize"></i></a>
+                                                    @if ($gallery->image_url != '')
+                                            <a href="{{ $gallery->image_url }}"><i class="icon-link"></i></a>
+                                            @endif
                                         </div>
-                                        <a class="full_link" href="{{ $gallery->image_url }}" target="_blank">&nbsp;</a>
-                                    </div>
-                                @endforeach
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <!-- end: portfolio item -->
                             </div>
-                        @endif
-                    @endforeach
-                </div>
+                        </div>
+                    @endif
+                @endforeach
             @endif
         </div>
     </section>
 @endsection
+@push('page_scripts')
+    <!-- fullcalendar-->
+    <script src='{{ asset('frontend/js/fullcalendar/jquery-ui.min.js') }}'></script>
+    <script src='{{ asset('frontend/js/fullcalendar/moment.min.js') }}'></script>
+    <script src='{{ asset('frontend/js/fullcalendar/fullcalendar.min.js') }}'></script>
+    <script>
+        $calendar = $('#calendar');
+        today = new Date();
+        y = today.getFullYear();
+        m = today.getMonth();
+        d = today.getDate();
+        $calendar.fullCalendar({
+            viewRender: function(view, element) {
+                // We make sure that we activate the perfect scrollbar when the view isn't on Month
+                if (view.name != 'month') {
+                    $(element).find('.fc-scroller').perfectScrollbar();
+                }
+            },
+            header: {
+                left: 'title',
+                center: 'month,agendaWeek,agendaDay',
+                right: 'prev,next,today'
+            },
+            defaultDate: today,
+            selectable: true,
+            selectHelper: true,
+            views: {
+                month: { // name of view
+                    titleFormat: 'MMMM YYYY'
+                    // other view-specific options here
+                },
+                week: {
+                    titleFormat: " MMMM D YYYY"
+                },
+                day: {
+                    titleFormat: 'D MMM, YYYY'
+                }
+            },
+            select: function(start, end) {
+                // on select we show the Sweet Alert modal with an input
+                swal({
+                    title: 'Create an Event',
+                    html: '<div class="form-group">' +
+                        '<input class="form-control" placeholder="Event Title" id="input-field">' +
+                        '</div>',
+                    showCancelButton: true,
+                    confirmButtonClass: 'btn btn-success',
+                    cancelButtonClass: 'btn btn-danger',
+                    buttonsStyling: false
+                }).then(function(result) {
+                    var eventData;
+                    event_title = $('#input-field').val();
+                    if (event_title) {
+                        eventData = {
+                            title: event_title,
+                            start: start,
+                            end: end
+                        };
+                        $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
+                    }
+                    $calendar.fullCalendar('unselect');
+                });
+            },
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
+            events: [{
+                    title: 'All Day Event',
+                    start: new Date(y, m, 1),
+                    className: 'event-default'
+                },
+                {
+                    title: 'Meeting',
+                    start: new Date(y, m, d - 1, 10, 30),
+                    allDay: false,
+                    className: 'event-green'
+                },
+                {
+                    title: 'Lunch',
+                    start: new Date(y, m, d + 7, 12, 0),
+                    end: new Date(y, m, d + 7, 14, 0),
+                    allDay: false,
+                    className: 'event-red'
+                },
+                {
+                    title: 'Nud-pro Launch',
+                    start: new Date(y, m, d - 2, 12, 0),
+                    allDay: true,
+                    className: 'event-azure'
+                },
+                {
+                    title: 'Birthday Party',
+                    start: new Date(y, m, d + 1, 19, 0),
+                    end: new Date(y, m, d + 1, 22, 30),
+                    allDay: false,
+                    className: 'event-azure'
+                },
+                {
+                    title: 'Click for Creative Tim',
+                    start: new Date(y, m, 21),
+                    end: new Date(y, m, 22),
+                    url: 'https://www.creative-tim.com',
+                    className: 'event-orange'
+                },
+                {
+                    title: 'Click for Google',
+                    start: new Date(y, m, 21),
+                    end: new Date(y, m, 22),
+                    url: 'https://www.creative-tim.com',
+                    className: 'event-orange'
+                }
+            ]
+        });
+    </script>
+@endpush

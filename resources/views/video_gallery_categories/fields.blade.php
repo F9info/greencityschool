@@ -11,13 +11,12 @@
 
     {!! Form::number('year', null, [
         'class' => 'form-control digitsonly',
-        'required',
         'data-parsley-pattern' => '[0-9]*',
         'maxlength' => '4',
         'minlength' => '4',
         'inputmode'=>'numeric',
     ]) !!}
-    {!! Form::label('year', 'Year:', ['class' => 'span_required']) !!}
+    {!! Form::label('year', 'Year:', ['class' => 'span_required1']) !!}
 
 </div>
 

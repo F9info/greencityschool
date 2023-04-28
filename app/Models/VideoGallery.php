@@ -32,14 +32,12 @@ class VideoGallery extends Model
 
     public static $rules = [
         'video_gallery_category_id' => 'required',
-        'title' => 'required',
-        'video_url' => 'required'
+
     ];
 
     public static $update_rules = [
         'video_gallery_category_id' => 'required',
-        'title' => 'required',
-        'video_url' => 'required'
+  
     ];
 
     public function videoGalleryCategory(){

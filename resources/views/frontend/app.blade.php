@@ -67,7 +67,7 @@
                                             <ul class="dropdown-menu">
                                                 @foreach ($menu->subMenu as $submenu)
                                                     <li
-                                                        class="dropdown-submenu {{ $menu->subMenu->count() > 0 ? 'submenu' : '' }} {{ Request::is('pages/' . $submenu->slug) ? 'active' : '' }}">
+                                                        class="dropdown-submenu1 {{ $menu->subMenu->count() > 0 ? 'submenu' : '' }} {{ Request::is('pages/' . $submenu->slug) ? 'active' : '' }}">
                                                         <a
                                                             href="{{ pageLink($submenu->type, $submenu->slug, $submenu->custom_url) }}">{{ $submenu->title }}</a>
                                                         <ul class="dropdown-menu">
@@ -113,102 +113,94 @@ person_add
         <!-- end: Content -->
         <!-- Footer -->
         <footer id="footer">
+            <div class="foreground-image"><img src="{{ asset('images/about-bg.svg') }}" alt="Green City Em School" />
+            </div>
             <div class="footer-content">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-5 footer-left">
+                        <div class="col-xl-4 col-lg-4 col-md-3">
+                            <!-- Footer widget area 1 -->
                             <div class="widget">
-                                <a href="{{ url('/') }}" class="footer_logo">
-                                    <img alt="logo"
-                                        src="{{ asset('images/site-images/' . applicationSettings('logo')) }}" />
-                                </a>
-                                <div class="footer-text">
-                                    {!! applicationSettings('footer-text') !!}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 footer-right">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="widget">
-                                        <div class="widget-title">Sitemap</div>
-                                        <ul class="list">
-                                            <li><a href="{{ url('/') }}"><i
-                                                        class="fa fa-arrow-alt-circle-right"></i> Home</a></li>
-                                            @foreach (footerMenu() as $menu)
-                                                @if ($menu->type == 'pageview')
-                                                    <li
-                                                        class="{{ $menu->subMenu->count() > 0 ? 'submenu' : '' }} {{ Request::is('pages/' . $menu->slug) ? 'active' : '' }}">
-                                                        <a
-                                                            href="{{ $menu->custom_url != '' ? $menu->custom_url : url('/pages/' . $menu->slug) }}"><i
-                                                                class="fa fa-arrow-alt-circle-right"></i>
-                                                            {{ $menu->title }}
-                                                        </a>
-                                                        @foreach ($menu->subMenu as $submenu)
-                                                    <li
-                                                        class="{{ $menu->subMenu->count() > 0 ? 'submenu' : '' }} {{ Request::is('pages/' . $submenu->slug) ? 'active' : '' }}">
-                                                        <a
-                                                            href="{{ pageLink($submenu->type, $submenu->slug, $submenu->custom_url) }}"><i
-                                                                class="fa fa-arrow-alt-circle-right"></i>{{ $submenu->title }}</a>
-                                                    </li>
-                                                @endforeach
-                                                </li>
-                                            @endif
-                                            @endforeach
-                                            <li><a href="{{ url('/contact-us') }}"><i
-                                                        class="fa fa-arrow-alt-circle-right"></i>Contact Us</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="widget">
-                                        <div class="widget-title">Contact Us</div>
-                                        <ul class="address_lost">
-                                            <li><i class="fa fa-map-marker-alt"></i> {!! applicationSettings('address') !!}
-                                            </li>
-                                            <li><i class="fa fa-phone"></i> <a
-                                                    href="tel:{{ applicationSettings('primary-phone-number') }}">
-                                                    {{ applicationSettings('primary-phone-number') }}
+                                <h4>Quick Links</h4>
+                                <ul class="list">
+                                    @foreach (footerMenu() as $menu)
+                                        @if ($menu->type == 'pageview')
+                                            <li>
+                                                <a href="{{ pageLink($menu->type, $menu->slug, $menu->custom_url) }}">{{ $menu->title }}
                                                 </a>
                                             </li>
-                                            <li><i class="fa fa-envelope"></i> <a
-                                                    href="mailto:{{ applicationSettings('primary-email') }}">{{ applicationSettings('primary-email') }}
-                                                </a></li>
-                                        </ul>
-                                        <div class="social">
-                                            @if (applicationSettings('facebook') != '')
-                                                <a class="facebook" target="_blank"
-                                                    href="{{ applicationSettings('facebook') }}"><i
-                                                        class="fab fa-facebook-f"></i></a>
-                                                @endif @if (applicationSettings('twitter') != '')
-                                                    <a class="twitter" target="_blank"
-                                                        href="{{ applicationSettings('twitter') }}"><i
-                                                            class="fab fa-twitter"></i></a>
-                                                @endif
-                                                @if (applicationSettings('instagram') != '')
-                                                    <a class="linkedin" target="_blank"
-                                                        href="{{ applicationSettings('instagram') }}"><i
-                                                            class="fab fa-instagram"></i></a>
-                                                @endif
-                                                @if (applicationSettings('google-plus') != '')
-                                                    <a class="google-plus"
-                                                        href="{{ applicationSettings('google-plus') }}"
-                                                        target="_blank"><i class="fab fa-google-plus-g"></i></a>
-                                                    @endif @if (applicationSettings('youtube') != '')
-                                                        <a class="youtube"
-                                                            href="{{ applicationSettings('youtube') }}"
-                                                            target="_blank"><i class="fab fa-youtube"></i></a>
-                                                    @endif
-                                        </div>
-                                    </div>
-                                </div>
+                                        @endif
+                                        @if ($menu->subMenu->count() > 0)
+                                            @foreach ($menu->subMenu as $submenu)
+                                                <li>
+                                                    <a
+                                                        href="{{ pageLink($submenu->type, $submenu->slug, $submenu->custom_url) }}">{{ $submenu->title }}</a>
+                                                </li>
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                </ul>
                             </div>
+                            <!-- end: Footer widget area 1 -->
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <!-- Footer widget area 2 -->
+                            <div class="widget">
+                                <h4>Events</h4>
+                                <ul class="list full-list">
+                                    <li><a href="{{ url('/pages/latest-events') }}">Latest Events</a></li>
+                                    <li><a href="{{ url('/pages/past-events') }}">Past Events</a></li>
+                                    <li><a href="{{ url('/pages/ongoing-events') }}">Ongoing Events</a></li>                                       
+                                </ul>
+                            </div>
+                            <!-- end: Footer widget area 2 -->
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <!-- Footer widget area 3 -->
+                            <div class="widget">
+                                <h4>Get In Touch</h4>
+                                <ul class="list full-list icon-full-list">
+                                    <li><i class="fa fa-map-marker-alt"></i> {!! applicationSettings('address') !!}
+                                    </li>
+                                    <li><i class="fa fa-phone"></i> <a
+                                            href="tel:{{ applicationSettings('primary-phone-number') }}">
+                                            {{ applicationSettings('primary-phone-number') }}
+                                        </a>
+                                    </li>
+                                    <li><i class="fa fa-envelope"></i> <a
+                                            href="mailto:{{ applicationSettings('primary-email') }}">{{ applicationSettings('primary-email') }}
+                                        </a></li>
+                                </ul>
+                            </div>
+                            <!-- end: Footer widget area 3 -->
+                        </div>
+                   
+                        <div class="col-xl-4 col-lg-4 col-md-12">
+                            <!-- Footer widget area 5 -->
+                            <div class="widget clearfix widget-newsletter">
+                                <h3>Stay in the loop</h3>
+                                <p>Join our mailing list to stay in the loop with our newest for Event and concert
+                                </p>
+                                <form class="widget-subscribe-form p-r-40" action="include/subscribe-form.php"
+                                    role="form" method="post" novalidate="novalidate">
+                                    <div class="input-group">
+                                        <input aria-required="true" name="widget-subscribe-form-email"
+                                            class="form-control required email" placeholder="Enter your Email"
+                                            type="email">
+                                        <span class="input-group-btn">
+                                            <button type="submit" id="widget-subscribe-submit-button"
+                                                class="btn"><i class="fa fa-paper-plane"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- end: Footer widget area 5 -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="copyright-content">
-                <div class="container">
+                <div class="container-fluid">
                     <p class="fleft">{{ applicationSettings('copyright') }}</p>
                     <p class="fright">Designed by <a href="https://f9tech.com/" target="_blank">F9 Tech</a></p>
                     <div class="clear"></div>
@@ -239,132 +231,9 @@ person_add
     <script src="{{ asset('frontend/js/custom_slick.js') }}"></script>
     <!-- functions-->
     <script src="{{ asset('frontend/js/functions.js') }}"></script>
-    <!-- fullcalendar-->
-    <script src='{{ asset('frontend/js/fullcalendar/jquery-ui.min.js') }}'></script>
-    <script src='{{ asset('frontend/js/fullcalendar/moment.min.js') }}'></script>
-    <script src='{{ asset('frontend/js/fullcalendar/fullcalendar.min.js') }}'></script>
     <!-- custom-->
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <!-- custom calendar-->
-    <script>
-        $calendar = $('#calendar');
-
-        today = new Date();
-        y = today.getFullYear();
-        m = today.getMonth();
-        d = today.getDate();
-
-        $calendar.fullCalendar({
-            viewRender: function(view, element) {
-                // We make sure that we activate the perfect scrollbar when the view isn't on Month
-                if (view.name != 'month') {
-                    $(element).find('.fc-scroller').perfectScrollbar();
-                }
-            },
-            header: {
-                left: 'title',
-                center: 'month,agendaWeek,agendaDay',
-                right: 'prev,next,today'
-            },
-            defaultDate: today,
-            selectable: true,
-            selectHelper: true,
-            views: {
-                month: { // name of view
-                    titleFormat: 'MMMM YYYY'
-                    // other view-specific options here
-                },
-                week: {
-                    titleFormat: " MMMM D YYYY"
-                },
-                day: {
-                    titleFormat: 'D MMM, YYYY'
-                }
-            },
-
-            select: function(start, end) {
-
-                // on select we show the Sweet Alert modal with an input
-                swal({
-                    title: 'Create an Event',
-                    html: '<div class="form-group">' +
-                        '<input class="form-control" placeholder="Event Title" id="input-field">' +
-                        '</div>',
-                    showCancelButton: true,
-                    confirmButtonClass: 'btn btn-success',
-                    cancelButtonClass: 'btn btn-danger',
-                    buttonsStyling: false
-                }).then(function(result) {
-
-                    var eventData;
-                    event_title = $('#input-field').val();
-
-                    if (event_title) {
-                        eventData = {
-                            title: event_title,
-                            start: start,
-                            end: end
-                        };
-                        $calendar.fullCalendar('renderEvent', eventData, true); // stick? = true
-                    }
-
-                    $calendar.fullCalendar('unselect');
-
-                });
-            },
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-
-
-            // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
-            events: [{
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1),
-                    className: 'event-default'
-                },
-                {
-                    title: 'Meeting',
-                    start: new Date(y, m, d - 1, 10, 30),
-                    allDay: false,
-                    className: 'event-green'
-                },
-                {
-                    title: 'Lunch',
-                    start: new Date(y, m, d + 7, 12, 0),
-                    end: new Date(y, m, d + 7, 14, 0),
-                    allDay: false,
-                    className: 'event-red'
-                },
-                {
-                    title: 'Nud-pro Launch',
-                    start: new Date(y, m, d - 2, 12, 0),
-                    allDay: true,
-                    className: 'event-azure'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d + 1, 19, 0),
-                    end: new Date(y, m, d + 1, 22, 30),
-                    allDay: false,
-                    className: 'event-azure'
-                },
-                {
-                    title: 'Click for Creative Tim',
-                    start: new Date(y, m, 21),
-                    end: new Date(y, m, 22),
-                    url: 'https://www.creative-tim.com',
-                    className: 'event-orange'
-                },
-                {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 21),
-                    end: new Date(y, m, 22),
-                    url: 'https://www.creative-tim.com',
-                    className: 'event-orange'
-                }
-            ]
-        });
-    </script>
     @stack('page_scripts')
 </body>
 

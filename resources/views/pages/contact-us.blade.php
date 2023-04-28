@@ -2,10 +2,7 @@
 @section('content')
     <!-- Page title -->
     <div class="inner-banner ">
-        <div class="inner-page-title">
-            <h1>Contact Us
-            </h1>
-        </div>
+  
         <figure>
             @if (applicationSettings('contact-page-banner') != '')
             <img src="{{  asset('images/site-images/' . applicationSettings('contact-page-banner')) }}"
@@ -16,6 +13,14 @@
             @endif 
         </figure>
     </div>
+
+<div class="container text-center">
+    <div class="inner-page-title">
+        <h1>Contact Us
+        </h1>
+    </div>
+</div>
+
     <!-- end: Page title -->
     <section class="contact-us">
         <div class="container">
@@ -49,11 +54,6 @@
                     </div>
                 </div>
     </section>
-    <!--------------------------- sponser-block --------------------------->
-    @include('pages.sponsors')
-    <!--------------------------- subscribe_block --------------------------->
-    @include('pages.subscribe')
-    <!--------------------------- media-partners-block --------------------------->
-    @include('pages.media-partners')
+  
 @endsection
 @include('pages.recaptcha')

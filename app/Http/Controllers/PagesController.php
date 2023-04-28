@@ -63,7 +63,7 @@ class PagesController extends Controller
         $cafogst = CommitteeCategory::where('name', 'CAF Organization Structure')->first();
         $cafogsts = $cafogst != null ? getCommitteeMembers($cafogst->id) : null;
 
-        $photoCategories = PhotoGalleryCategory::where('publish', 1)->orderBy('position', 'asc')->get();
+        $photoCategories = PhotoGalleryCategory::where('name', 'Gallery')->orderBy('position', 'asc')->get();
 
         $videoCategories = VideoGalleryCategory::where('publish', 1)->orderBy('position', 'asc')->get();
 

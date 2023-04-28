@@ -4,23 +4,25 @@
             <figure>
                 <a href="{{ url('event/' . $event->slug) }}"><img alt=""
                         src="{{ URL::asset('images/events/' . $event->image) }}"></a>
-
-                <span class="cat">{{ $event->eventCategory->name }}</span>
+ 
+                <span class="cat no-need-remove">{{ $event->eventCategory->name }}</span>
             </figure>
             <div class="description-events">
-                <h3><a href="{{ url('event/' . $event->slug) }}">{{ $event->event_name }}</a></h3>
+                <h2><a href="{{ url('event/' . $event->slug) }}">{{ $event->event_name }}</a></h2>
                 <div class="disc">
                     {!! \Illuminate\Support\Str::limit(strip_tags($event->event_description), $limit = 120, $end = '...') !!}
                 </div>
-                <div class="date_event">
+                <div class="date_event no-need-remove">
                     <span class="material-symbols-outlined">
                         event
                     </span>
                     {{ date('D d M Y', strtotime($event->start_date)) . ' to ' . date('D d M Y', strtotime($event->end_date)) }}
                 </div>
                 <div class="buttons">
+                    <div class="no-need-remove">
                     @include('pages.event-register-btn', ['event', $event])
-                    <a href="{{ url('event/' . $event->slug) }}" class="readmore fright" tabindex="0">Read More</a>
+                    </div>
+                    <a href="{{ url('event/' . $event->slug) }}" class="readmore" tabindex="0">Read More</a>
                     <div class="clear"></div>
                 </div>
             </div>
