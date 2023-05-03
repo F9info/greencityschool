@@ -22,6 +22,21 @@
         <section class="inner-page-content">
             <div class="container">
                 {!! $page->content !!}
+
+
+
+
+               
+                    
+
+
+
+
+
+
+
+
+
             </div>
         </section>
     @endif
@@ -210,8 +225,8 @@
                                 <div class="icon bold"> <span class="material-symbols-outlined">
                                         workspace_premium
                                     </span> </div>
-                                <div class="counter bold"> <span data-speed="3500" data-refresh-interval="50" data-to="9033"
-                                        data-from="0" data-seperator="true"></span> </div>
+                                <div class="counter bold"> <span data-speed="3500" data-refresh-interval="50"
+                                        data-to="9033" data-from="0" data-seperator="true"></span> </div>
                                 <p>Certified Teachers</p>
                             </div>
                         </div>
@@ -220,8 +235,8 @@
                                 <div class="icon"> <span class="material-symbols-outlined">
                                         group
                                     </span> </div>
-                                <div class="counter"> <span data-speed="1500" data-refresh-interval="50" data-to="258658"
-                                        data-from="0" data-seperator="true"></span> </div>
+                                <div class="counter"> <span data-speed="1500" data-refresh-interval="50"
+                                        data-to="258658" data-from="0" data-seperator="true"></span> </div>
                                 <p>Students Enrolled</p>
                             </div>
                         </div>
