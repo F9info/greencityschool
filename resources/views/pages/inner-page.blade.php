@@ -40,7 +40,16 @@
     @else
         <section class="inner-page-content">
             <div class="container">
-                {!! $page->content !!}
+                @if($page->parent != 'root' && $page->subMenu()->count() > 0)
+                    @foreach ($page->subMenu as $subMenu)
+                        <div id="{{ $subMenu->slug }}">
+                            <h1>{{ $subMenu->title }}</h1>
+                            {!! $subMenu->content !!}
+                        </div>
+                    @endforeach
+                @else
+                    {!! $page->content !!}
+                @endif
             </div>
         </section>
     @endif

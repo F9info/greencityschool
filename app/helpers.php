@@ -131,7 +131,8 @@ if (!function_exists("formatAmount")) {
 if (!function_exists("pageLink")) {
     function pageLink($type, $slug, $custom_url)
     {
-        return $type == 'nopage' ? '#' : ($custom_url != '' ? $custom_url : url('/pages/' . $slug));
+        $link = $type == 'nopage' ? '#' : ($custom_url != '' ? $custom_url : url('/pages/' . $slug));
+        return $link;
     }
 }
 if (!function_exists("committeeMemberActiveList")) {

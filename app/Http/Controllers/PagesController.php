@@ -40,7 +40,7 @@ class PagesController extends Controller
         $events = $this->getEvents('upcoming')->get();
         $photoCategories = PhotoGalleryCategory::where('name', 'Home Page')->orderBy('position', 'asc')->get();
         $category = ServiceCategory::where('name', 'Amenities')->first();
-        $services = $category != null ? Service::where('service_category_id', $category->id)->get() : null;
+        $services = $category != null ? Service::where('service_category_id', $category->id)->latest()->limit(4)->get() : null;
         return view('pages.index', compact('sliders', 'news', 'events', 'photoCategories','category','services'));
     }
     public function innerPageView($slug)

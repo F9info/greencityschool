@@ -68,11 +68,14 @@
                                                 @foreach ($menu->subMenu as $submenu)
                                                     <li
                                                         class="dropdown-submenu {{ $menu->subMenu->count() > 0 ? 'submenu' : '' }} {{ Request::is('pages/' . $submenu->slug) ? 'active' : '' }}">
-                                                        <a
-                                                            href="{{ pageLink($submenu->type, $submenu->slug, $submenu->custom_url) }}">{{ $submenu->title }}</a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="#">dropdown-submenu</a></li>
-                                                        </ul>
+                                                        <a href="{{ pageLink($submenu->type, $submenu->slug, $submenu->custom_url) }}">{{ $submenu->title }}</a>
+                                                        @if ($submenu->subMenu->count() > 0)
+                                                            <ul class="dropdown-menu">
+                                                                @foreach ($submenu->subMenu as $secondlevelsubmenu)
+                                                                    <li><a href="{{ pageLink($submenu->type, $submenu->slug, $submenu->custom_url). '#' . $secondlevelsubmenu->slug }}">{{ $secondlevelsubmenu->title }}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
                                                     </li>
                                                 @endforeach
                                             </ul>
