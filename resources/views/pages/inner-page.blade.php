@@ -284,18 +284,18 @@
     @endif
     <section class="inner_pages">
         <div class="container">
-            @if ($page->slug == 'trustees' && $founders != null)
+            @if ($page->slug == 'vpl-education-society' && $trustees != null)
                 <div class="row excutive_gallery ">
-                    @if ($founders != '' && $founders->count() > 0)
-                        @foreach ($founders as $founder)
+                    @if ($trustees != '' && $trustees->count() > 0)
+                        @foreach ($trustees as $trustee)
                             <div class="col-lg-4">
                                 <div class="card">
                                     <figure class="fig_pic"><img class="card-img-top"
-                                            src="{{ asset('images/committee-members/' . $founder->member_photo) }}"
+                                            src="{{ asset('images/committee-members/' . $trustee->member_photo) }}"
                                             alt=""></figure>
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $founder->name }}</h5>
-                                        <p class="card-catigory">{{ $founder->designation }}</p>
+                                        <h5 class="card-title">{{ $trustee->name }}</h5>
+                                        <p class="card-catigory">{{ $trustee->designation }}</p>
                                     </div>
                                 </div>
                             </div>

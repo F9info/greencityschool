@@ -46,8 +46,8 @@ class PagesController extends Controller
     public function innerPageView($slug)
     {
         $page = Cms::where('slug', $slug)->FirstOrFail();
-        $founderCategory = CommitteeCategory::where('name', 'Trustees')->first();
-        $founders = $founderCategory != null ? getCommitteeMembers($founderCategory->id) : null;
+        $trusteeCategory = CommitteeCategory::where('name', 'Trustees')->first();
+        $trustees = $trusteeCategory != null ? getCommitteeMembers($trusteeCategory->id) : null;
         $executiveCommittee = CommitteeCategory::where('name', 'Executive Committee')->first();
         $executiveCommittees = $executiveCommittee != null ? getCommitteeMembers($executiveCommittee->id) : null;
         $boardMember = CommitteeCategory::where('name', 'Board Members')->first();
@@ -62,7 +62,7 @@ class PagesController extends Controller
         $ongoingEvents = $this->getEvents('current')->get();
         $category = ServiceCategory::where('name', 'Amenities')->first();
         $services = $category != null ? Service::where('service_category_id', $category->id)->get() : null;
-        return view('pages.inner-page', compact('page', 'founders', 'category','services', 'executiveCommittees', 'boardMembers', 'cafogsts', 'photoCategories', 'videoCategories', 'newsCoverageCategories', 'upcomingEvents', 'pastEvents', 'ongoingEvents'));
+        return view('pages.inner-page', compact('page', 'trustees', 'category','services', 'executiveCommittees', 'boardMembers', 'cafogsts', 'photoCategories', 'videoCategories', 'newsCoverageCategories', 'upcomingEvents', 'pastEvents', 'ongoingEvents'));
     }
     public function NewsDetails($id)
     {
