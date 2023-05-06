@@ -67,7 +67,7 @@
                                             <ul class="dropdown-menu">
                                                 @foreach ($menu->subMenu as $submenu)
                                                     <li
-                                                        class="dropdown-submenu1 {{ $menu->subMenu->count() > 0 ? 'submenu' : '' }} {{ Request::is('pages/' . $submenu->slug) ? 'active' : '' }}">
+                                                        class="dropdown-submenu {{ $menu->subMenu->count() > 0 ? 'submenu' : '' }} {{ Request::is('pages/' . $submenu->slug) ? 'active' : '' }}">
                                                         <a
                                                             href="{{ pageLink($submenu->type, $submenu->slug, $submenu->custom_url) }}">{{ $submenu->title }}</a>
                                                         <ul class="dropdown-menu">
