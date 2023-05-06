@@ -83,7 +83,7 @@
     <!---------------------------  facilities --------------------------->
     <section class="facilities-section">
         <div class="container">
-            <h2 class="text-center h1 page-title"> test</h2>
+            <h2 class="text-center h1 page-title"><span>Our</span> Amenities</h2>
             <div class="facilities-list">
                 @foreach ($services as $service)
                 <div class="row align-items-center item ">
@@ -102,33 +102,7 @@
             </div>
         </div>
     </section>
-    {{-- <section class="facilities-section">
-        <div class="container">
-            @if (getServices() != null)
-            @php($category = getServiceCategory('Amenities'))
-            <h2 class="text-center h1 page-title"> {!! $category->display_name !!}</h2>
-            <img
-            src="{{ asset('images/services/' . $category->image) }}" alt=""
-            height="50">
-            <div class="facilities-list">
-                @foreach (getServices() as $service)
-                <div class="row align-items-center item ">
-                    <div class="col-md-6 pic">
-                        <figure><img src="{{ asset('images/services/' . $service->image) }}" alt=""></figure>
-                    </div>
-                    <div class="col-md-6 content">
-                        <h3 class="h1">{{ $service->title }}</h3>
-                        {!! $service->short_description !!}
-                    </div>
-                </div>
-                @endforeach
-                @endif
-            </div>
-            <div class="text-center m-t-70">
-                <a href="#" class="btn btn-primary">View More</a>
-            </div>
-        </div>
-    </section> --}}
+   
     <!--------------------------- end facilities --------------------------->
     <!---------------------------  calendar --------------------------->
     <section class="calendar">

@@ -238,3 +238,23 @@ padding: 8px 0 0px 0;
 
   .bio-page .list-icon{margin-left: 10px;}
   .bio-page .list-icon ul li:before{color: #555555;}
+
+
+  .trustees .team-members .team-member .team-image figure{width: 100%; height: 400px; overflow: hidden;}
+  .trustees .team-members .team-member .team-image figure img{width: 100%; height: 100%; object-fit: cover; -moz-object-fit: cover; -webkit-object-fit: cover; -o-object-fit: cover; object-position: top left; }
+
+
+  .facilities-page .item img{ width: 100%;}
+  .facilities-page .item .content{padding: 100px;}
+  .facilities-page .item:nth-child(even){background: #f9f9f9;}
+  .facilities-page .item:nth-child(even) .pic{ order: 2;}
+  .facilities-page .item:nth-child(even) .content{ order: 1;}
+
+
+  .facilities-page{margin-top: -90px;}
+  .facilities-page .pic{padding-left: 0; padding-right: 0;}
+  .facilities-page figure{margin: 0;}
+  .inner-page-content .sub-item img{width: 100%;}
+  .inner-page-content .sub-item:nth-child(even) .pic{order: 2; }
+  .inner-page-content .sub-item:nth-child(even) .description{order: 1; }
+  .inner-page-content .sub-item  .h1{border-bottom: solid 2px #cccccc; padding-bottom: 20px;}

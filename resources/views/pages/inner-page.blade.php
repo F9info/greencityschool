@@ -18,10 +18,10 @@
     <!-- end: Page title -->
     @if ($page->slug == 'vpl-education-society' || $page->slug == 'photos' || $page->slug == 'videos')
         {!! $page->content !!}
-        @elseif ($page->slug == 'amenities')
-        <section class="facilities-section p-0" >
-            <div class="container">
-                <div class="facilities-list">
+        {{-- @elseif ($page->slug == 'amenities')
+        <section class="facilities-page p-0" >
+        
+          
                     @foreach ($services as $service)
                     <div class="row align-items-center item ">
                         <div class="col-md-6 pic">
@@ -33,192 +33,68 @@
                         </div>
                     </div>
                     @endforeach
-                </div>
-            </div>
-        </section>
+          
+        </section> --}}
 
     @else
         <section class="inner-page-content">
-            <div class="container">
+       
                 @if($page->parent != 'root' && $page->subMenu()->count() > 0)
                     @foreach ($page->subMenu as $subMenu)
-                        <div id="{{ $subMenu->slug }}">
-                            <h1>{{ $subMenu->title }}</h1>
+                        <div class="sub-item" id="{{ $subMenu->slug }}">
+                            <div class="container">
+                                <div class="card p-50">
+                            {{-- <h1 class="text-center">{{ $subMenu->title }}</h1> --}}
                             {!! $subMenu->content !!}
+                        </div>
+                        </div>
                         </div>
                     @endforeach
                 @else
                     {!! $page->content !!}
                 @endif
-            </div>
+           
         </section>
     @endif
    
-    @if ($page->slug == 'vpl-education-society')
-        <section class="about-top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-5 pic">
-                        <figure class="pic-radius">
-                            <img src="http://127.0.0.1:8000/images/media/lahxjhqth.jpg" alt="GREEN CITY SCHOO" />
-                        </figure>
-                    </div>
-                    <div class="col-md-7 description">
-                        <h2>WHY GREEN CITY SCHOOL ?</h2>
-                        <p>We intend to provide children with flexibility in learning. Allowing self-development by
-                            nurturing
-                            creativity. Following up on children’s interests and enhance their learning. Provide Enough
-                            opportunities to develop skills and confidence. Allowing the children to use their own
-                            initiative.
-                        </p>
-                        <ol class="inner-list">
-                            <li> A Top class education on par with the best anywhere.</li>
-                            <li> A great ambience to work hard and to develop all personality traits.</li>
-                            <li> A position in society that will grant you pride and respect.</li>
-                        </ol>
-                        <h5 class="color-primary font-weight-700">Campus features :</h5>
-                        <p>Fully equipped labs, Library with huge number of books, Swimming pool, Basket ball, table tennis,
-                            shuttle courts, Football ground, Well organized Transportation facility, CBSE Syllabus/NCERT
-                            Books
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="background-primary text-light text-center">
-            <div class="container">
-                <h2 class="font-weight-700 h1">Affiliated to Central Board of Secondary Education,
-                    New Delhi vide affiliation number 130384 up to Secondary Level.</h2>
-            </div>
-        </section>
-        <section class="mission-vision">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 missin-left">
-                        <div class="inner">
-                            <div class="text">
-                                <h2 class="h1">Mission</h2>
-                                <p>We, the Members and Team of the DPSE-Society acquire a Charter Excellence in Education,
-                                    Social Service and Advanced Development of Human Values with a commitment</p>
-                                <p>We, the Members and Team of the DPSE-Society acquire a Excellence in Education, Social
-                                    Service and Advanced Development of Human Values with a commitment Advanced Development
-                                    of
-                                    Human Values with a commitment</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 missin-right">
-                        <div class="inner">
-                            <div class="text">
-                                <h2 class="h1">Vision</h2>
-                                <p>We, the Members and Team of the DPSE-Society acquire a Charter Excellence in Education,
-                                    Social Service and Advanced Development of Human Values with a commitment We, the
-                                    Members
-                                    and Team of the DPSE-Society acquire a Excellence in Education, Social Service and
-                                    Advanced
-                                    Development of Human Values with a commitment Advanced Development of Human Values with
-                                    a
-                                    commitment DPSE-Society acquire a Excellence in Education, Social Service and Advanced
-                                    Development of Human Values with a commitment </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="our-goal background-image text-light"
-            style="background-image:url('http://127.0.0.1:8000/images/media/lahxjhqth.jpg');">
-            <div class="container">
-                <h2 class="text-center h1">Our Goal</h2>
-                <h3 class="text-center m-b-70">We, the Members and Team of the DPSE-Society acquire a Charter of Excellence
-                    in
-                    Education, Social
-                    Service and Advanced Development of Human Values with a commitment:</h3>
-                <ul class="inner-list list-large list-two-columns">
-                    <li>D.P.S Educational Society</li>
-                    <li>Encourage every child to work to the best of his/her ability</li>
-                    <li>Aims to offer world class educational training and learning activities.</li>
-                    <li>To promote quality education through technological advancement.</li>
-                    <li>Standardize education system with stress free and wholesome environment.</li>
-                    <li>Best in Class Curriculum.</li>
-                    <li>The D.P.S Educational Society</li>
-                    <li>Encourage every child to work to the best of his/her ability.</li>
-                    <li>Best in Class Curriculum.</li>
-                    <li>The D.P.S Educational Society
-                    <li>Encourage every child to work to the best of his/her ability.</li>
-                    <li>Best in Class Curriculum.</li>
-                    <li>The D.P.S Educational Society</li>
-                </ul>
-            </div>
-        </section>
-        <section class="national-society">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 description mob-order-2">
-                        <h2 class="inner-title">The National Education Society</h2>
-                        <p>The enlightening world of streamlined education, where excellence has been redefined by the
-                            comprehensive efforts of the competent professionals and visionary management. We promise you a
-                            rewarding and mutually enriching experience that will lead you to the unchallenged and
-                            unexplored
-                            zenith of success.</p>
-                        <p>The National Education Society, Sarigam welcome you to the enlightening world of streamlined
-                            education, where excellence has been redefined by the comprehensive efforts of the competent
-                            professionals and visionary management. We promise you a rewarding and mutually enriching
-                            experience
-                            that will lead you to the unchallenged and unexplored zenith of success.</p>
-                        <p>The goal fo the school is to provide quality education and circulate the best standards of
-                            learning
-                            among children, with excellence. Focus is given on individual potential and each student is
-                            believed
-                            to be unique. The method of teaching is child-oriented and the atmosphere is warm and friendly.
-                            Inculcating values through practice helps to mould the children into responsible citizens of
-                            tomorrow.</p>
-                    </div>
-                    <div class="col-md-6 pic mob-order-1">
-                        <figure class="pic-radius">
-                            <img src="http://127.0.0.1:8000/images/media/lahxjhqth.jpg" alt="GREEN CITY SCHOOl" />
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </section>
+    @if ($page->slug == 'vpl-education-society' && $trustees != null)
+        
+       
+   
         <section class="trustees background-primary text-center">
             <div class="container">
                 <h2 class="h1 text-light m-b-50">Trustees of the society</h2>
                 <div class="row team-members team-members-shadow m-b-40">
+
+
+
+
+                    @if ($trustees != '' && $trustees->count() > 0)
+                    @foreach ($trustees as $trustee)
+
+
+
                     <div class="col-lg-4">
                         <div class="team-member">
                             <div class="team-image p-20 p-b-0">
-                                <img src="http://127.0.0.1:8000/images/media/lahxjhqth.jpg" alt="GREEN CITY SCHOOl" />
+                              <figure><img src="{{ asset('images/committee-members/' . $trustee->member_photo) }}" alt="{{ $trustee->name }}" /></figure>
                             </div>
                             <div class="team-desc">
-                                <h3>K. Vara Prasad</h3>
-                                <p class="color-primary font-weight-700">President</p>
+                                <h3>{{ $trustee->name }}</h3>
+                                <p class="color-primary font-weight-700">{{ $trustee->designation }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <div class="team-image p-20 p-b-0">
-                                <img src="http://127.0.0.1:8000/images/media/lahxjhqth.jpg" alt="GREEN CITY SCHOOl" />
-                            </div>
-                            <div class="team-desc">
-                                <h3>K. Vara Prasad</h3>
-                                <p class="color-primary font-weight-700">President</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <div class="team-image p-20 p-b-0">
-                                <img src="http://127.0.0.1:8000/images/media/lahxjhqth.jpg" alt="GREEN CITY SCHOOl" />
-                            </div>
-                            <div class="team-desc">
-                                <h3>K. Vara Prasad</h3>
-                                <p class="color-primary font-weight-700">President</p>
-                            </div>
-                        </div>
-                    </div>
+
+
+
+                    @endforeach
+                @endif
+
+
+                
+                   
+                   
                 </div>
                 <a href="#" class="btn btn-light btn-lg">View More Trustees</a>
             </div>
@@ -284,25 +160,7 @@
     @endif
     <section class="inner_pages">
         <div class="container">
-            @if ($page->slug == 'vpl-education-society' && $trustees != null)
-                <div class="row excutive_gallery ">
-                    @if ($trustees != '' && $trustees->count() > 0)
-                        @foreach ($trustees as $trustee)
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <figure class="fig_pic"><img class="card-img-top"
-                                            src="{{ asset('images/committee-members/' . $trustee->member_photo) }}"
-                                            alt=""></figure>
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $trustee->name }}</h5>
-                                        <p class="card-catigory">{{ $trustee->designation }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
-            @endif
+
             @if ($page->slug == 'executive-committee' && $executiveCommittees != null)
                 <div class="row excutive_gallery ">
                     @if ($executiveCommittees != '' && $executiveCommittees->count() > 0)
