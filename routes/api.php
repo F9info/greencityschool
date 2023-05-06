@@ -113,3 +113,9 @@ use Illuminate\Support\Facades\Route;
 
 // Route::resource('mail-templates', App\Http\Controllers\API\MailTemplatesAPIController::class)
 //     ->except(['create', 'edit']);
+
+// Route::resource('service-categories', App\Http\Controllers\API\ServiceCategoryAPIController::class)
+//     ->except(['create', 'edit']);
+
+// Route::resource('services', App\Http\Controllers\API\ServiceAPIController::class)
+//     ->except(['create', 'edit']);

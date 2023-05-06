@@ -12,6 +12,8 @@ use App\Models\MembershipType;
 use App\Models\PaymentMethod;
 use App\Models\SponsorCategory;
 use App\Models\Sponsor;
+use App\Models\Service;
+use App\Models\ServiceCategory;
 use App\Models\Transaction;
 use Carbon\Carbon;
 function unique_code($limit)
@@ -164,6 +166,21 @@ if (!function_exists("getMediaPartners")) {
         return $mediaPartners;
     }
 }
+// if (!function_exists("getServices")) {
+//     function getServices()
+//     {
+//         $category = ServiceCategory::where('name', 'Amenities')->first();
+//         $services = $category != null ? Service::where('service_category_id', $category->id)->get() : null;
+//         return $services;
+//     }
+// }
+// if (!function_exists("getServiceCategory")) {
+//     function getServiceCategory($categoryName)
+//     {
+//         $servicesCategory = ServiceCategory::where('name', $categoryName)->first();
+//         return $servicesCategory;
+//     }
+// }
 if (!function_exists("getStripeKey")) {
     function getStripeKey()
     {

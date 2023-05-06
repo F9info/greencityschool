@@ -83,60 +83,52 @@
     <!---------------------------  facilities --------------------------->
     <section class="facilities-section">
         <div class="container">
-            <h2 class="text-center h1 page-title"><span>Our</span>
-                Facilities</h2>
+            <h2 class="text-center h1 page-title"> test</h2>
             <div class="facilities-list">
+                @foreach ($services as $service)
                 <div class="row align-items-center item ">
                     <div class="col-md-6 pic">
-                        <figure><img src="http://127.0.0.1:8000/images/slider/dz30wsoti.jpg" alt=""></figure>
+                        <figure><img src="{{ asset('images/services/' . $service->image) }}" alt="{!! $service->image_alt_text !!}"></figure>
                     </div>
                     <div class="col-md-6 content">
-                        <h3 class="h1">Table Tennis</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tristique odio, in mollis
-                            enim ornare at. Nulla fringilla turpis nec libero feugiat. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Aliquam cursus tristique odio, in mollis enim ornare at. Nulla
-                            fringilla turpis nec libero feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Aliquam cursus tristique odio, in mollis enim ornare at. Nulla fringilla turpis nec libero
-                            feugiat.</p>
-                        <a class="btn btn-primary" href="#">Read More</a>
+                        <h3 class="h1">{{ $service->title }}</h3>
+                        {!! $service->short_description !!}
                     </div>
                 </div>
-                <div class="row align-items-center item ">
-                    <div class="col-md-6 pic">
-                        <figure><img src="http://127.0.0.1:8000/images/slider/dz30wsoti.jpg" alt=""></figure>
-                    </div>
-                    <div class="col-md-6 content">
-                        <h3 class="h1">Table Tennis</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tristique odio, in mollis
-                            enim ornare at. Nulla fringilla turpis nec libero feugiat. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Aliquam cursus tristique odio, in mollis enim ornare at. Nulla
-                            fringilla turpis nec libero feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Aliquam cursus tristique odio, in mollis enim ornare at. Nulla fringilla turpis nec libero
-                            feugiat.</p>
-                        <a class="btn btn-primary" href="#">Read More</a>
-                    </div>
-                </div>
-                <div class="row align-items-center item ">
-                    <div class="col-md-6 pic">
-                        <figure><img src="http://127.0.0.1:8000/images/slider/dz30wsoti.jpg" alt=""></figure>
-                    </div>
-                    <div class="col-md-6 content">
-                        <h3 class="h1">Table Tennis</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tristique odio, in mollis
-                            enim ornare at. Nulla fringilla turpis nec libero feugiat. Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit. Aliquam cursus tristique odio, in mollis enim ornare at. Nulla
-                            fringilla turpis nec libero feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Aliquam cursus tristique odio, in mollis enim ornare at. Nulla fringilla turpis nec libero
-                            feugiat.</p>
-                        <a class="btn btn-primary" href="#">Read More</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="text-center m-t-70">
                 <a href="#" class="btn btn-primary">View More</a>
             </div>
         </div>
     </section>
+    {{-- <section class="facilities-section">
+        <div class="container">
+            @if (getServices() != null)
+            @php($category = getServiceCategory('Amenities'))
+            <h2 class="text-center h1 page-title"> {!! $category->display_name !!}</h2>
+            <img
+            src="{{ asset('images/services/' . $category->image) }}" alt=""
+            height="50">
+            <div class="facilities-list">
+                @foreach (getServices() as $service)
+                <div class="row align-items-center item ">
+                    <div class="col-md-6 pic">
+                        <figure><img src="{{ asset('images/services/' . $service->image) }}" alt=""></figure>
+                    </div>
+                    <div class="col-md-6 content">
+                        <h3 class="h1">{{ $service->title }}</h3>
+                        {!! $service->short_description !!}
+                    </div>
+                </div>
+                @endforeach
+                @endif
+            </div>
+            <div class="text-center m-t-70">
+                <a href="#" class="btn btn-primary">View More</a>
+            </div>
+        </div>
+    </section> --}}
     <!--------------------------- end facilities --------------------------->
     <!---------------------------  calendar --------------------------->
     <section class="calendar">
@@ -330,14 +322,14 @@
                                         <div class="grid-item ">
                                             <figure><img src="{{ asset('images/gallery/' . $gallery->image) }}"
                                                     alt="{{ $gallery->title }}"></figure>
-                                                    <div class="gallery-buttons">
-                                            <a title="{{ $gallery->title }}" data-lightbox="gallery-image"
-                                                href="{{ asset('images/gallery/' . $gallery->image) }}"><i
-                                                    class="icon-maximize"></i></a>
-                                                    @if ($gallery->image_url != '')
-                                            <a href="{{ $gallery->image_url }}"><i class="icon-link"></i></a>
-                                            @endif
-                                        </div>
+                                            <div class="gallery-buttons">
+                                                <a title="{{ $gallery->title }}" data-lightbox="gallery-image"
+                                                    href="{{ asset('images/gallery/' . $gallery->image) }}"><i
+                                                        class="icon-maximize"></i></a>
+                                                @if ($gallery->image_url != '')
+                                                    <a href="{{ $gallery->image_url }}"><i class="icon-link"></i></a>
+                                                @endif
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>

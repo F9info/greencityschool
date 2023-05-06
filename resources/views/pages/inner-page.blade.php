@@ -18,28 +18,33 @@
     <!-- end: Page title -->
     @if ($page->slug == 'vpl-education-society' || $page->slug == 'photos' || $page->slug == 'videos')
         {!! $page->content !!}
+        @elseif ($page->slug == 'amenities')
+        <section class="facilities-section p-0" >
+            <div class="container">
+                <div class="facilities-list">
+                    @foreach ($services as $service)
+                    <div class="row align-items-center item ">
+                        <div class="col-md-6 pic">
+                            <figure><img src="{{ asset('images/services/' . $service->image) }}" alt="{!! $service->image_alt_text !!}"></figure>
+                        </div>
+                        <div class="col-md-6 content">
+                            <h3 class="h1">{{ $service->title }}</h3>
+                            {!! $service->short_description !!}
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
     @else
         <section class="inner-page-content">
             <div class="container">
                 {!! $page->content !!}
-
-
-
-
-               
-                    
-
-
-
-
-
-
-
-
-
             </div>
         </section>
     @endif
+   
     @if ($page->slug == 'vpl-education-society')
         <section class="about-top">
             <div class="container">
