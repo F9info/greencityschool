@@ -56,9 +56,9 @@
                     <div class="col-md-4">
                         <div class="green-card">
                             <div class="green-inner">
-                                <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-two-image')) }}" alt=""></figure>
-                                <h4>{!! applicationSettings('welcome-block-two-title') !!}</h4>
-                                {!! applicationSettings('welcome-block-two-description') !!}
+                                <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-three-image')) }}" alt=""></figure>
+                                <h4>{!! applicationSettings('welcome-block-three-title') !!}</h4>
+                                {!! applicationSettings('welcome-block-three-description') !!}
                             </div>
                         </div>
                     </div>
