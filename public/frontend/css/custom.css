@@ -30,7 +30,7 @@ border-radius: 35px; padding: 30px; margin-top: 110px;}
 .green-inner{background: #E4E4E4;
 box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 48px; padding:50px; margin-top: -110px; }
-.green-card  figure{width: 185px; height: 185px; border-radius: 25%; overflow: hidden; margin: 0 auto 20px  auto; }
+.green-card  figure{width: 185px; height: 185px; border-radius: 25%; overflow: hidden; margin: 0 auto 20px  auto;     border: solid 1px #0f6600; }
 .green-card  figure img{width: 100%; height: 100%; border-radius: 25%; object-fit: cover;}
 .about-items{margin-top: 70px;}
 .facilities-list{}
@@ -258,3 +258,6 @@ padding: 8px 0 0px 0;
   .inner-page-content .sub-item:nth-child(even) .pic{order: 2; }
   .inner-page-content .sub-item:nth-child(even) .description{order: 1; }
   .inner-page-content .sub-item  .h1{border-bottom: solid 2px #cccccc; padding-bottom: 20px;}
+
+
+  .footer-content  .widget p{margin: 0;}

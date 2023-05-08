@@ -163,16 +163,29 @@ person_add
                             <div class="widget">
                                 <h4>Get In Touch</h4>
                                 <ul class="list full-list icon-full-list">
+
+
+
+                                    @if (applicationSettings('address') != '')
                                     <li><i class="fa fa-map-marker-alt"></i> {!! applicationSettings('address') !!}
                                     </li>
+                                    @endif
+
+                                    @if (applicationSettings('primary-phone-number') != '')
                                     <li><i class="fa fa-phone"></i> <a
                                             href="tel:{{ applicationSettings('primary-phone-number') }}">
                                             {{ applicationSettings('primary-phone-number') }}
                                         </a>
                                     </li>
+                                    @endif
+
+                                    @if (applicationSettings('primary-email') != '')
                                     <li><i class="fa fa-envelope"></i> <a
                                             href="mailto:{{ applicationSettings('primary-email') }}">{{ applicationSettings('primary-email') }}
                                         </a></li>
+                                        @endif
+
+
                                 </ul>
                             </div>
                             <!-- end: Footer widget area 3 -->

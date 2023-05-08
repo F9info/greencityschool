@@ -30,19 +30,15 @@
                 alt="Green City Em School" /></div>
         <div class="inner">
             <div class="container">
-                <h2 class="text-center h1 page-title"><span>About</span>
-                    Green City Em School</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tristique odio, in mollis enim
-                    ornare at. Nulla fringilla turpis nec libero feugiat, nec pellentesque dolor imperdiet. Vestibulum
-                    volutpat libero non magna dapibus fermentum. Sed molestie felis elementum, sodales massa a, tempus sem.
-                    Sed accumsan ex ligula, id sagittis justo consectetur et. Fusce fermentum laoreet diam in blandit. Nunc
-                    vestibulum nibh vel volutpat interdum. Donec elit turpis, gravida non placerat nec, laoreet sit amet
-                    dolor. Donec volutpat dui in felis lobortis porta. </p>
+                <h2 class="text-center h1 page-title">
+                    {!! applicationSettings('welcome-title') !!}
+                    </h2>
+                    {!! applicationSettings('welcome-description') !!}
                 <div class="row align-items-center about-items">
                     <div class="col-md-4">
                         <div class="green-card">
                             <div class="green-inner">
-                                <figure><img src="http://127.0.0.1:8000/images/slider/dz30wsoti.jpg" alt="">
+                                <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-one-image')) }}" alt="">
                                 </figure>
                                 <h4>Teaching at Visakhapatnam</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tristique odio,

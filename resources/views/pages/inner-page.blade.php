@@ -1,6 +1,6 @@
 @extends('frontend.app')
 @section('content')
-    <!-- Page title -->
+    <!-- inner-banner -->
     <div class="inner-banner ">
         <figure>
             @if ($page->banner_image != '')
@@ -10,91 +10,58 @@
             @endif
         </figure>
     </div>
-    <div class="container text-center">
-        <div class="inner-page-title">
+    <!-- end: inner-banner -->
+    <!-- Page title -->
+    <div class="text-center">
+    <div class="inner-page-title">
+        <div class="container ">
             <h1>{{ $page->banner_title != '' ? $page->banner_title : $page->title }}</h1>
         </div>
     </div>
+</div>
     <!-- end: Page title -->
     @if ($page->slug == 'vpl-education-society' || $page->slug == 'photos' || $page->slug == 'videos')
         {!! $page->content !!}
-        {{-- @elseif ($page->slug == 'amenities')
-        <section class="facilities-page p-0" >
-        
-          
-                    @foreach ($services as $service)
-                    <div class="row align-items-center item ">
-                        <div class="col-md-6 pic">
-                            <figure><img src="{{ asset('images/services/' . $service->image) }}" alt="{!! $service->image_alt_text !!}"></figure>
-                        </div>
-                        <div class="col-md-6 content">
-                            <h3 class="h1">{{ $service->title }}</h3>
-                            {!! $service->short_description !!}
-                        </div>
-                    </div>
-                    @endforeach
-          
-        </section> --}}
-
     @else
         <section class="inner-page-content">
-       
-                @if($page->parent != 'root' && $page->subMenu()->count() > 0)
-                    @foreach ($page->subMenu as $subMenu)
-                        <div class="sub-item" id="{{ $subMenu->slug }}">
-                            <div class="container">
-                                <div class="card p-50">
-                            {{-- <h1 class="text-center">{{ $subMenu->title }}</h1> --}}
-                            {!! $subMenu->content !!}
+            @if ($page->parent != 'root' && $page->subMenu()->count() > 0)
+                @foreach ($page->subMenu as $subMenu)
+                    <div class="sub-item" id="{{ $subMenu->slug }}">
+                        <div class="container">
+                            <div class="card p-50">
+                                {!! $subMenu->content !!}
+                            </div>
                         </div>
-                        </div>
-                        </div>
-                    @endforeach
-                @else
+                    </div>
+                @endforeach
+            @else
+                <div class="container">
                     {!! $page->content !!}
-                @endif
-           
+                </div>
+            @endif
         </section>
     @endif
-   
     @if ($page->slug == 'vpl-education-society' && $trustees != null)
-        
-       
-   
         <section class="trustees background-primary text-center">
             <div class="container">
                 <h2 class="h1 text-light m-b-50">Trustees of the society</h2>
                 <div class="row team-members team-members-shadow m-b-40">
-
-
-
-
                     @if ($trustees != '' && $trustees->count() > 0)
-                    @foreach ($trustees as $trustee)
-
-
-
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <div class="team-image p-20 p-b-0">
-                              <figure><img src="{{ asset('images/committee-members/' . $trustee->member_photo) }}" alt="{{ $trustee->name }}" /></figure>
+                        @foreach ($trustees as $trustee)
+                            <div class="col-lg-4">
+                                <div class="team-member">
+                                    <div class="team-image p-20 p-b-0">
+                                        <figure><img src="{{ asset('images/committee-members/' . $trustee->member_photo) }}"
+                                                alt="{{ $trustee->name }}" /></figure>
+                                    </div>
+                                    <div class="team-desc">
+                                        <h3>{{ $trustee->name }}</h3>
+                                        <p class="color-primary font-weight-700">{{ $trustee->designation }}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="team-desc">
-                                <h3>{{ $trustee->name }}</h3>
-                                <p class="color-primary font-weight-700">{{ $trustee->designation }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    @endforeach
-                @endif
-
-
-                
-                   
-                   
+                        @endforeach
+                    @endif
                 </div>
                 <a href="#" class="btn btn-light btn-lg">View More Trustees</a>
             </div>
@@ -115,8 +82,8 @@
                                 <div class="icon bold"> <span class="material-symbols-outlined">
                                         workspace_premium
                                     </span> </div>
-                                <div class="counter bold"> <span data-speed="3500" data-refresh-interval="50"
-                                        data-to="9033" data-from="0" data-seperator="true"></span> </div>
+                                <div class="counter bold"> <span data-speed="3500" data-refresh-interval="50" data-to="9033"
+                                        data-from="0" data-seperator="true"></span> </div>
                                 <p>Certified Teachers</p>
                             </div>
                         </div>
@@ -125,8 +92,8 @@
                                 <div class="icon"> <span class="material-symbols-outlined">
                                         group
                                     </span> </div>
-                                <div class="counter"> <span data-speed="1500" data-refresh-interval="50"
-                                        data-to="258658" data-from="0" data-seperator="true"></span> </div>
+                                <div class="counter"> <span data-speed="1500" data-refresh-interval="50" data-to="258658"
+                                        data-from="0" data-seperator="true"></span> </div>
                                 <p>Students Enrolled</p>
                             </div>
                         </div>
@@ -135,8 +102,8 @@
                                 <div class="icon"> <span class="material-symbols-outlined">
                                         fact_check
                                     </span> </div>
-                                <div class="counter bold"> <span data-speed="3500" data-refresh-interval="50"
-                                        data-to="99" data-suffix="%" data-from="0" data-seperator="true"></span>
+                                <div class="counter bold"> <span data-speed="3500" data-refresh-interval="50" data-to="99"
+                                        data-suffix="%" data-from="0" data-seperator="true"></span>
                                 </div>
                                 <p>Board Results of Students</p>
                             </div>
@@ -160,7 +127,6 @@
     @endif
     <section class="inner_pages">
         <div class="container">
-
             @if ($page->slug == 'executive-committee' && $executiveCommittees != null)
                 <div class="row excutive_gallery ">
                     @if ($executiveCommittees != '' && $executiveCommittees->count() > 0)
