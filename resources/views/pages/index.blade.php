@@ -189,7 +189,7 @@
                         @endforeach
                     </div>
                 @else
-                    <h3 align="center">No Latest Events Found</h3>
+                    <h3 align="center">No Latest Events Found </h3>
                 @endif
             </div>
         </div>
