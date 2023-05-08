@@ -68,11 +68,14 @@
         </section>
         <section class="why-choose-us no-padding">
             <div class="inner  background-image text-light text-center"
-                style="background-image:url('http://127.0.0.1:8000/images/media/lahxjhqth.jpg');">
+                style="background-image:url('{{ asset('images/site-images/' . applicationSettings('why-choose-us-banner')) }}');">
                 <div class="container">
                     <h1>Why Choose Us</h1>
                 </div>
             </div>
+
+
+            
             <div class="counter-section">
                 <div class="container">
                     <!--Icon box counters -->

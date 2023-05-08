@@ -38,33 +38,27 @@
                     <div class="col-md-4">
                         <div class="green-card">
                             <div class="green-inner">
-                                <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-one-image')) }}" alt="">
-                                </figure>
-                                <h4>Teaching at Visakhapatnam</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tristique odio,
-                                    in mollis enim ornare at. Nulla fringilla turpis nec libero feugiat....</p>
+                                <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-one-image')) }}" alt=""></figure>
+                                <h4>{!! applicationSettings('welcome-block-one-title') !!}</h4>
+                                {!! applicationSettings('welcome-block-one-description') !!}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="green-card">
                             <div class="green-inner">
-                                <figure><img src="http://127.0.0.1:8000/images/slider/dz30wsoti.jpg" alt="">
-                                </figure>
-                                <h4>Teaching at Visakhapatnam</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tristique odio,
-                                    in mollis enim ornare at. Nulla fringilla turpis nec libero feugiat....</p>
+                                <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-two-image')) }}" alt=""></figure>
+                                <h4>{!! applicationSettings('welcome-block-two-title') !!}</h4>
+                                {!! applicationSettings('welcome-block-two-description') !!}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="green-card">
                             <div class="green-inner">
-                                <figure><img src="http://127.0.0.1:8000/images/slider/dz30wsoti.jpg" alt="">
-                                </figure>
-                                <h4>Teaching at Visakhapatnam</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus tristique odio,
-                                    in mollis enim ornare at. Nulla fringilla turpis nec libero feugiat....</p>
+                                <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-two-image')) }}" alt=""></figure>
+                                <h4>{!! applicationSettings('welcome-block-two-title') !!}</h4>
+                                {!! applicationSettings('welcome-block-two-description') !!}
                             </div>
                         </div>
                     </div>
