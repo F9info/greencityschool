@@ -261,3 +261,6 @@ padding: 8px 0 0px 0;
 
 
   .footer-content  .widget p{margin: 0;}
+  .contact_right  .list-icon li{position: relative; padding-left: 20px;}
+
+  .contact_right  .list-icon li i{position: absolute; left: 0; top:8px;}

@@ -2973,7 +2973,7 @@ Main menu - Vertical
 /* ----------------------------------------------------------------
 Main Menu: Responsive
 -----------------------------------------------------------------*/
-@media (max-width: 991px) {
+@media (max-width: 1300px) {
   #mainMenu-trigger {
     position: relative;
     opacity: 1;

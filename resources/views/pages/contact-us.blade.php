@@ -25,7 +25,7 @@
     <section class="contact-us">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 contact_left">
+                <div class="col-md-6 contact_left mob-order-2">
                     <h2>Get In Touch</h2>
                  {!! Form::open(['url' => 'contact-form-submission', 'id' => 'contact-form']) !!}
                     <div class="row form_fields">
@@ -38,7 +38,7 @@
                     {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'id' => 'contact_btn']) !!}
                     {!! Form::close() !!}
                 </div>
-                <div class="col-md-6 contact_right">
+                <div class="col-md-6 contact_right mob-order-1">
                     <h2>Address & Map</h2>
                     <ul class="list-icon">
                         <li><i class="fa fa-map-marker-alt"></i> {!! applicationSettings('address') !!}</li>
