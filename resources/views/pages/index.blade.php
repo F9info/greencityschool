@@ -34,31 +34,34 @@
                     {!! applicationSettings('welcome-title') !!}
                     </h2>
                     {!! applicationSettings('welcome-description') !!}
-                <div class="row align-items-center about-items">
-                    <div class="col-md-4">
-                        <div class="green-card">
-                            <div class="green-inner">
+                <div class="row  about-items">
+                    <div class="col-md-4 home-card-item">
+                        <div class="green-card h-100">
+                            <div class="green-inner ">
                                 <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-one-image')) }}" alt=""></figure>
                                 <h4>{!! applicationSettings('welcome-block-one-title') !!}</h4>
                                 {!! applicationSettings('welcome-block-one-description') !!}
+                               
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="green-card">
+                    <div class="col-md-4 home-card-item ">
+                        <div class="green-card h-100">
                             <div class="green-inner">
                                 <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-two-image')) }}" alt=""></figure>
                                 <h4>{!! applicationSettings('welcome-block-two-title') !!}</h4>
                                 {!! applicationSettings('welcome-block-two-description') !!}
+                              
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="green-card">
-                            <div class="green-inner">
+                    <div class="col-md-4 home-card-item">
+                        <div class="green-card h-100">
+                            <div class="green-inner ">
                                 <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-three-image')) }}" alt=""></figure>
                                 <h4>{!! applicationSettings('welcome-block-three-title') !!}</h4>
                                 {!! applicationSettings('welcome-block-three-description') !!}
+                              
                             </div>
                         </div>
                     </div>

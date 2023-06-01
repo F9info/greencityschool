@@ -84,7 +84,7 @@
                                 @endforeach
                                 <li><a href="{{ url('/contact-us') }}">Contact us</a></li>
                                 {{-- <li><a href="{{ url('/donate') }}">Donate</a></li> --}}
-                                <li class="li-margin">
+                                <li class="li-margin" style="display: none">
                                     <a class="btn btn-primary"
                                         href="{{ Auth::check() ? route('logout') : route('login') }}"
                                         onclick="{{ Auth::check() ? "event.preventDefault(); document.getElementById('logout-form').submit();" : '' }}">
