@@ -449,6 +449,21 @@ h1, .h1, .background-primary .h1 {
     line-height: 1.5em;
 }
 
+.green-card figure{margin-bottom: 30px;}
+
+.home-card-item{margin-top: 0;}
+
+.green-card, .green-card {margin-bottom: 50px;}
+
+.green-card, .green-card .green-inner{height: auto !important;}
+
+.green-card .green-inner::before{   
+   left: -12px;
+  top: 127px;
+  width: 107%;
+  height: 75%;}
+
+
 }
 
 
