@@ -37,7 +37,7 @@
                 <div class="row  about-items">
                     <div class="col-md-4 home-card-item">
                         <div class="green-card h-100">
-                            <div class="green-inner ">
+                            <div class="green-inner h-100 ">
                                 <figure><img src="{{ asset('images/site-images/' . applicationSettings('welcome-block-one-image')) }}" alt=""></figure>
                                 <h4>{!! applicationSettings('welcome-block-one-title') !!}</h4>
                                 {!! applicationSettings('welcome-block-one-description') !!}

@@ -22,7 +22,7 @@
             {!! Form::model($service, ['route' => ['services.update', $service->id], 'method' => 'patch', 'files' => true]) !!}
 
             <div class="card-body">
-                <div class="row ">
+                <div class="row  animation-form">
                     @include('services.fields')
                 </div>
             </div>
