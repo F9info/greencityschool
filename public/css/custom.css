@@ -9,6 +9,7 @@ body {
 .dashboard-top_list .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 48;
 }
+
 .nav-sidebar .nav-link span.arrow_right,
 .animation-form .form-group label {
   -webkit-transition: all 0.1s ease-in-out;
@@ -897,7 +898,11 @@ body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav)
   padding: 10px 30px 10px 20px;
   position: relative;
   min-width: 300px;
+  
 }
+
+.col-12 .cat-title{width: 100%;}
+
 .cat-title::before {
   content: "";
   position: absolute;

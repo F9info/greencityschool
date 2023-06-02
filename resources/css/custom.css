@@ -831,6 +831,7 @@ background-color: #e9ecef !important;
   padding: 10px 30px 10px 20px;
   position: relative;
   min-width: 300px;
+
 }
 .cat-title::before {
   content: "";

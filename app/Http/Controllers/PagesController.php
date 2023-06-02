@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Mail\DynamicEmail;
 use App\Http\Controllers\Auth\RegisterController;
@@ -21,6 +19,8 @@ use App\Models\EventRegistration;
 use App\Models\MailTemplates;
 use App\Models\PaymentMethod;
 use App\Models\PersonalDetails;
+use App\Models\Service;
+use App\Models\ServiceCategory;
 use App\Models\Transaction;
 use App\Models\User;
 use Laracasts\Flash\Flash;
@@ -31,62 +31,48 @@ use Illuminate\Support\Facades\Hash;
 use Newsletter;
 use Mail;
 use PDF;
-
 class PagesController extends Controller
 {
-
     public function index()
     {
         $sliders = Slider::where('publish', 1)->orderBy('position', 'asc')->get();
         $news = News::where('publish', 1)->orderBy('position', 'asc')->get();
         $events = $this->getEvents('upcoming')->get();
         $photoCategories = PhotoGalleryCategory::where('name', 'Home Page')->orderBy('position', 'asc')->get();
-   
-
-
-
-        return view('pages.index', compact('sliders', 'news', 'events', 'photoCategories',));
+        $category = ServiceCategory::where('name', 'Amenities')->first();
+        $services = $category != null ? Service::where('service_category_id', $category->id)->latest()->limit(4)->get() : null;
+        return view('pages.index', compact('sliders', 'news', 'events', 'photoCategories','category','services'));
     }
-
     public function innerPageView($slug)
     {
         $page = Cms::where('slug', $slug)->FirstOrFail();
-        $founderCategory = CommitteeCategory::where('name', 'Trustees')->first();
-        $founders = $founderCategory != null ? getCommitteeMembers($founderCategory->id) : null;
-
+        $trusteeCategory = CommitteeCategory::where('name', 'Trustees')->first();
+        $trustees = $trusteeCategory != null ? getCommitteeMembers($trusteeCategory->id) : null;
         $executiveCommittee = CommitteeCategory::where('name', 'Executive Committee')->first();
         $executiveCommittees = $executiveCommittee != null ? getCommitteeMembers($executiveCommittee->id) : null;
-
         $boardMember = CommitteeCategory::where('name', 'Board Members')->first();
         $boardMembers = $boardMember != null ? getCommitteeMembers($boardMember->id) : null;
-
         $cafogst = CommitteeCategory::where('name', 'CAF Organization Structure')->first();
         $cafogsts = $cafogst != null ? getCommitteeMembers($cafogst->id) : null;
-
-        $photoCategories = PhotoGalleryCategory::where('publish', 1)->orderBy('position', 'asc')->get();
-
+        $photoCategories = PhotoGalleryCategory::where('name', 'Gallery')->orderBy('position', 'asc')->get();
         $videoCategories = VideoGalleryCategory::where('publish', 1)->orderBy('position', 'asc')->get();
-
         $newsCoverageCategories = NewsCoverageCategory::where('publish', 1)->orderBy('position', 'asc')->get();
-
         $upcomingEvents = $this->getEvents('upcoming')->get();
         $pastEvents = $this->getEvents('past')->get();
         $ongoingEvents = $this->getEvents('current')->get();
-
-        return view('pages.inner-page', compact('page', 'founders', 'executiveCommittees', 'boardMembers', 'cafogsts', 'photoCategories', 'videoCategories', 'newsCoverageCategories', 'upcomingEvents', 'pastEvents', 'ongoingEvents'));
+        $category = ServiceCategory::where('name', 'Amenities')->first();
+        $services = $category != null ? Service::where('service_category_id', $category->id)->get() : null;
+        return view('pages.inner-page', compact('page', 'trustees', 'category','services', 'executiveCommittees', 'boardMembers', 'cafogsts', 'photoCategories', 'videoCategories', 'newsCoverageCategories', 'upcomingEvents', 'pastEvents', 'ongoingEvents'));
     }
-
     public function NewsDetails($id)
     {
         $news = News::find($id);
         return view('pages.news-details', compact('news'));
     }
-
     public function contactUs()
     {
         return view('pages.contact-us');
     }
-
     public function contactFormSubmission(Request $request)
     {
         $input = $request->all();
@@ -94,7 +80,6 @@ class PagesController extends Controller
         $type = 'contact';
         return redirect(url('success'))->with('type', $type);
     }
-
     public function success()
     {
         // $type = session('type');
@@ -109,15 +94,12 @@ class PagesController extends Controller
         //         return redirect(url('/'));
         //         break;
         // }
-
-
         if (session('donation_id')) {
             $donation = Donation::find(session('donation_id'));
             return view('pages.donate-success', compact('donation'));
         }
         return redirect(url('/'));
     }
-
     public function checkDuplicateEmail(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -127,7 +109,6 @@ class PagesController extends Controller
             return json_encode("success");
         }
     }
-
     public function updateProfile(Request $request)
     {
         $register = new RegisterController;
@@ -137,7 +118,6 @@ class PagesController extends Controller
         Flash::success('Your profile has been updated successfully.');
         return redirect()->back();
     }
-
     public function updatePassword(Request $request)
     {
         $user = User::find($request->user_id);
@@ -150,7 +130,6 @@ class PagesController extends Controller
         }
         return Redirect::to(URL::previous() . "#change-password-profile-tab");
     }
-
     public function getEvents($type)
     {
         $query = Event::query();
@@ -167,7 +146,6 @@ class PagesController extends Controller
         $events = $query->orderBy('start_date', 'desc');
         return $events;
     }
-
     public function eventDetails($slug)
     {
         $event = Event::where('slug', $slug)->where('publish', 1)->first();
@@ -177,7 +155,6 @@ class PagesController extends Controller
             return redirect('/');
         }
     }
-
     public function eventRegistration($slug)
     {
         $event = Event::where('slug', $slug)->where('publish', 1)->first();
@@ -190,7 +167,6 @@ class PagesController extends Controller
             return redirect('/');
         }
     }
-
     public function createEventRegistration($request)
     {
         $eventRegistration = new EventRegistration();
@@ -244,7 +220,6 @@ class PagesController extends Controller
         $eventRegistration->save();
         return $eventRegistration->id;
     }
-
     public function replaceMailEventDetails($eid, $tid, $template)
     {
         $registration = EventRegistration::find($eid);
@@ -254,14 +229,11 @@ class PagesController extends Controller
         $finalTemplate = str_replace($variable, $replace, $template);
         return $finalTemplate;
     }
-
     public function eventRegistrationSubmission(Request $request)
     {
         $register = new RegisterController;
-
         $eventRegistration = $this->createEventRegistration($request);
         $event_reg_detail = EventRegistration::find($eventRegistration);
-
         if ($request->payment_method == null) {
             $transaction_id = 'free';
             $payment_status = 'Success';
@@ -286,41 +258,34 @@ class PagesController extends Controller
             $this->eventPaidAdminSendMail($event_reg_detail->id, $transaction->id);
             $event_reg_detail->mailsent = 0;
         }
-
         $transaction->save();
         $event_reg_detail->save();
         return redirect(url('/'))->with('eventregistration', 'success');
     }
-
     public function eventPaidUserSendMail($eid, $tid, $email)
     {
         $mailTemplate = MailTemplates::where('heading', 'Event registration - Paid')->first();
         $finalTemplate = $this->replaceMailEventDetails($eid, $tid, $mailTemplate->description);
         Mail::to($email)->send(new DynamicEmail($mailTemplate->subject, $finalTemplate));
     }
-
     public function eventPaidAdminSendMail($eid, $tid)
     {
         $mailTemplate = MailTemplates::where('heading', 'Event Registrations for Admin - Paid')->first();
         $finalTemplate = $this->replaceMailEventDetails($eid, $tid, $mailTemplate->description);
         Mail::to(applicationSettings('admin-mail'))->send(new DynamicEmail($mailTemplate->subject, $finalTemplate));
     }
-
     public function eventUnPaidUserSendMail($eid, $tid, $email)
     {
         $mailTemplate = MailTemplates::where('heading', 'Event registration - Unpaid')->first();
         $finalTemplate = $this->replaceMailEventDetails($eid, $tid, $mailTemplate->description);
         Mail::to($email)->send(new DynamicEmail($mailTemplate->subject, $finalTemplate));
     }
-
     public function eventUnPaidAdminSendMail($eid, $tid)
     {
         $mailTemplate = MailTemplates::where('heading', 'Event Registrations for Admin -Unpaid')->first();
         $finalTemplate = $this->replaceMailEventDetails($eid, $tid, $mailTemplate->description);
         Mail::to(applicationSettings('admin-mail'))->send(new DynamicEmail($mailTemplate->subject, $finalTemplate));
     }
-
-
     public function replaceMailDonationDetails($did, $tid, $template)
     {
         $donation = Donation::find($did);
@@ -330,43 +295,34 @@ class PagesController extends Controller
         $finalTemplate = str_replace($variable, $replace, $template);
         return $finalTemplate;
     }
-
     public function donationUserSendMail($did, $tid, $email)
     {
         $mailTemplate = MailTemplates::where('heading', 'Thank you for giving donation')->first();
         $finalTemplate = $this->replaceMailDonationDetails($did, $tid, $mailTemplate->description);
-
         $donation = Donation::find($did);
-
         $data = [
             'donation' => $donation
         ];
-
         $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('pdf.donate-invoice', $data);
-
         $pdf->save('images/donate-invoice/invoice_' . $donation->id . '.pdf');
-
         Mail::send('emails.dynamic', array('template' => $finalTemplate), function ($message) use ($donation, $mailTemplate) {
             $message->to($donation->email)
                 ->subject($mailTemplate->subject)
                 ->attach('images/donate-invoice/invoice_' . $donation->id . '.pdf');
         });
     }
-
     public function donationAdminSendMail($did, $tid)
     {
         $mailTemplate = MailTemplates::where('heading', 'New Donatioin - Admin')->first();
         $finalTemplate = $this->replaceMailDonationDetails($did, $tid, $mailTemplate->description);
         Mail::to(applicationSettings('admin-mail'))->send(new DynamicEmail($mailTemplate->subject, $finalTemplate));
     }
-
     public function donate()
     {
         $categories = DonationCategory::where('publish', 1)->pluck('donation_cause', 'id');
         $paymentMethods = PaymentMethod::select('display_name', 'slug')->where('publish', 1)->orderBy('position', 'asc')->get();
         return view('pages.donate', compact('categories', 'paymentMethods'));
     }
-
     public function createDonation($request)
     {
         $donation = new Donation();
@@ -383,7 +339,6 @@ class PagesController extends Controller
         $donation->save();
         return $donation->id;
     }
-
     public function donationFormSubmission(Request $request)
     {
         $register = new RegisterController;

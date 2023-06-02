@@ -10,14 +10,13 @@
 <div class="numbers-input form-group  popup_input col-sm-4">
 
     {!! Form::number('year', null, [
-        'class' => 'form-control digitsonly',
-        'required',
+        'class' => 'form-control digitsonly',  
         'data-parsley-pattern'=>'[0-9]*',
         'maxlength' => '4',
         'minlength' => '4',
         'inputmode'=>'numeric',
     ]) !!}
-    {!! Form::label('year', 'Year:', ['class' => 'span_required']) !!}
+    {!! Form::label('year', 'Year:', ['class' => 'span_requiredss']) !!}
 
 </div>
 

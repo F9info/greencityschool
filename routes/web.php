@@ -51,6 +51,7 @@ Route::controller(PagesController::class)->group(function () {
     Route::post('/donation-form-submission', 'donationFormSubmission');
     Route::post('/contact-form-submission', 'contactFormSubmission');
     Route::get('/success', 'success');
+
     Route::post('/check-duplicate-email', 'checkDuplicateEmail');
     Route::get('/event/{slug}', 'eventDetails');
     Route::get('/event-registration/{slug}', 'eventRegistration');
@@ -243,4 +244,12 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/debug-sentry', function () {
         throw new Exception('My first Sentry error!');
     });
+
+    /* Services */
+    Route::controller(ServieController::class)->group(function () {
+        Route::resource('services', App\Http\Controllers\ServiceController::class);
+        Route::get('delete-services-image/{id}/{value}', 'removeServicesImage');
+    });
 });
+
+Route::resource('serviceCategories', App\Http\Controllers\ServiceCategoryController::class);

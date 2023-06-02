@@ -7,17 +7,15 @@ $(function () {
     speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true,
-          arrows: false,
-        },
-      },
-    ],
+  });
+  $(".single-slider").slick({
+    dots: true,
+    arrows: false,
+    infinite: true,
+    autoplay: true,
+    speed: 2000,
+    slidesToShow: 1,
+    slidesToScroll: 1,   
   });
   $(".home_events_slider").slick({
     dots: true,

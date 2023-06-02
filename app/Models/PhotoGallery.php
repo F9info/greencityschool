@@ -26,19 +26,19 @@ class PhotoGallery extends Model
         'photo_gallery_category_id' => 'integer',
         'title' => 'string',
         'image' => 'string',
-        'image_url' => 'string'
+       
     ];
 
     public static $rules = [
         'photo_gallery_category_id' => 'required',
-        'title' => 'required',
+       
         'image' => 'required',
-        'image_url' => 'required'
+       
     ];
 
     public static $update_rules = [
         'photo_gallery_category_id' => 'required',
-        'title' => 'required'
+   
     ];
 
     public function photoGalleryCategory(){

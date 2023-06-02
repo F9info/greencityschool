@@ -1,10 +1,7 @@
 @extends('frontend.app')
 @section('content')
-    <!-- Page title -->
+    <!-- inner-banner -->
     <div class="inner-banner ">
-        <div class="inner-page-title">
-            <h1>{{ $page->banner_title != '' ? $page->banner_title : $page->title }}</h1>
-        </div>
         <figure>
             @if ($page->banner_image != '')
                 <img src="{{ asset('images/inner-pages/' . $page->banner_image) }}" alt="{{ $page->title }}">
@@ -13,29 +10,126 @@
             @endif
         </figure>
     </div>
+    <!-- end: inner-banner -->
+    <!-- Page title -->
+    <div class="text-center">
+    <div class="inner-page-title">
+        <div class="container ">
+            <h1>{{ $page->banner_title != '' ? $page->banner_title : $page->title }}</h1>
+        </div>
+    </div>
+</div>
     <!-- end: Page title -->
-    <section class="inner_pages">
-        <div class="container">
-            {!! $page->content !!}
-            @if ($page->slug == 'trustees' && $founders != null)
-                <div class="row excutive_gallery ">
-                    @if ($founders != '' && $founders->count() > 0)
-                        @foreach ($founders as $founder)
+    @if ($page->slug == 'vpl-education-society' || $page->slug == 'photos' || $page->slug == 'videos')
+        {!! $page->content !!}
+    @else
+        <section class="inner-page-content">
+            @if ($page->parent != 'root' && $page->subMenu()->count() > 0)
+                @foreach ($page->subMenu as $subMenu)
+                    <div class="sub-item" id="{{ $subMenu->slug }}">
+                        <div class="container">
+                            <div class="card p-50">
+                                {!! $subMenu->content !!}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="container">
+                    {!! $page->content !!}
+                </div>
+            @endif
+        </section>
+    @endif
+    @if ($page->slug == 'vpl-education-society' && $trustees != null)
+        <section class="trustees background-primary text-center">
+            <div class="container">
+                <h2 class="h1 text-light m-b-50">Trustees of the society</h2>
+                <div class="row team-members team-members-shadow m-b-40">
+                    @if ($trustees != '' && $trustees->count() > 0)
+                        @foreach ($trustees as $trustee)
                             <div class="col-lg-4">
-                                <div class="card">
-                                    <figure class="fig_pic"><img class="card-img-top"
-                                            src="{{ asset('images/committee-members/' . $founder->member_photo) }}"
-                                            alt=""></figure>
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $founder->name }}</h5>
-                                        <p class="card-catigory">{{ $founder->designation }}</p>
+                                <div class="team-member">
+                                    <div class="team-image p-20 p-b-0">
+                                        <figure><img src="{{ asset('images/committee-members/' . $trustee->member_photo) }}"
+                                                alt="{{ $trustee->name }}" /></figure>
+                                    </div>
+                                    <div class="team-desc">
+                                        <h3>{{ $trustee->name }}</h3>
+                                        <p class="color-primary font-weight-700">{{ $trustee->designation }}</p>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     @endif
                 </div>
-            @endif
+                <a href="#" class="btn btn-light btn-lg">View More Trustees</a>
+            </div>
+        </section>
+        <section class="why-choose-us no-padding">
+            <div class="inner  background-image text-light text-center"
+                style="background-image:url('{{ asset('images/site-images/' . applicationSettings('why-choose-us-banner')) }}');">
+                <div class="container">
+                    <h1>Why Choose Us</h1>
+                </div>
+            </div>
+
+
+            
+            <div class="counter-section">
+                <div class="container">
+                    <!--Icon box counters -->
+                    <div class="row">
+                        <div class="col-lg-3 counter-item">
+                            <div class="icon-box effect shadow medium border center">
+                                <div class="icon bold"> <span class="material-symbols-outlined">
+                                        workspace_premium
+                                    </span> </div>
+                                <div class="counter bold"> <span data-speed="3500" data-refresh-interval="50" data-to="9033"
+                                        data-from="0" data-seperator="true"></span> </div>
+                                <p>Certified Teachers</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 counter-item">
+                            <div class="icon-box effect shadow medium border center">
+                                <div class="icon"> <span class="material-symbols-outlined">
+                                        group
+                                    </span> </div>
+                                <div class="counter"> <span data-speed="1500" data-refresh-interval="50" data-to="258658"
+                                        data-from="0" data-seperator="true"></span> </div>
+                                <p>Students Enrolled</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 counter-item">
+                            <div class="icon-box effect shadow medium border center">
+                                <div class="icon"> <span class="material-symbols-outlined">
+                                        fact_check
+                                    </span> </div>
+                                <div class="counter bold"> <span data-speed="3500" data-refresh-interval="50" data-to="99"
+                                        data-suffix="%" data-from="0" data-seperator="true"></span>
+                                </div>
+                                <p>Board Results of Students</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 counter-item">
+                            <div class="icon-box effect shadow medium border center">
+                                <div class="icon"><span class="material-symbols-outlined">
+                                        verified
+                                    </span>
+                                </div>
+                                <div class="counter"> <span data-speed="1500" data-refresh-interval="50" data-to="100"
+                                        data-suffix="%" data-from="0" data-seperator="true"></span> </div>
+                                <p>Satisfied Franchise.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End: Large counters-->
+                </div>
+            </div>
+        </section>
+    @endif
+    <section class="inner_pages">
+        <div class="container">
             @if ($page->slug == 'executive-committee' && $executiveCommittees != null)
                 <div class="row excutive_gallery ">
                     @if ($executiveCommittees != '' && $executiveCommittees->count() > 0)
@@ -105,24 +199,25 @@
                                 <h3 class="gallery_title">{{ $photoCategory->year }}
                                     {{-- -<span>{{ $photoCategory->name }}</span> --}}
                                 </h3>
-                                <div class="row">
+                                <!-- portfolio item -->
+                                <div class="grid-layout grid-4-columns" data-item="grid-item" data-margin="30"
+                                    data-lightbox="gallery">
                                     @foreach ($photoCategory->activePhotoGalleries as $gallery)
-                                        <div class="col-lg-3 overalsection">
-                                            <div class="card">
-                                                <figure> <img class="card-img-top"
-                                                        src="{{ asset('images/gallery/' . $gallery->image) }}"
-                                                        alt=""></figure>
-                                                <div class="card-body-01">
-                                                    <h5 class="card-title">{{ $gallery->title }}</h5>
-                                                    <a href="{{ $gallery->image_url }}" class="btn btn-primary btn-xs"
-                                                        target="_blank">View Photos</a>
-                                                </div>
+                                        <div class="grid-item ">
+                                            <figure><img src="{{ asset('images/gallery/' . $gallery->image) }}"
+                                                    alt="{{ $gallery->title }}"></figure>
+                                            <div class="gallery-buttons">
+                                                <a title="{{ $gallery->title }}" data-lightbox="gallery-image"
+                                                    href="{{ asset('images/gallery/' . $gallery->image) }}"><i
+                                                        class="icon-maximize"></i></a>
+                                                @if ($gallery->image_url != '')
+                                                    <a href="{{ $gallery->image_url }}"><i class="icon-link"></i></a>
+                                                @endif
                                             </div>
-                                            <a class="full_link" href="{{ $gallery->image_url }}"
-                                                target="_blank">&nbsp;</a>
                                         </div>
                                     @endforeach
                                 </div>
+                                <!-- end: portfolio item -->
                             </div>
                         @endif
                     @endforeach
@@ -133,7 +228,6 @@
                     @foreach ($videoCategories as $videoCategory)
                         @if ($videoCategory->activeVideoGalleries->count() > 0)
                             <div class="col-lg-12 gall-block">
-                                <h3 class="gallery_title">{{ $videoCategory->name }}</h3>
                                 <div data-lightbox="gallery" class="row">
                                     @foreach ($videoCategory->activeVideoGalleries as $videoGallery)
                                         @if (!empty($videoGallery->video_url))
@@ -219,10 +313,4 @@
             @endif
         </div>
     </section>
-    <!--------------------------- sponser-block --------------------------->
-    @include('pages.sponsors')
-    <!--------------------------- subscribe_block --------------------------->
-    @include('pages.subscribe')
-    <!--------------------------- media-partners-block --------------------------->
-    @include('pages.media-partners')
 @endsection

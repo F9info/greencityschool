@@ -52,8 +52,8 @@
 <!-- Title Field -->
 <div class="form-group   col-sm-4">
 
-    {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
-    {!! Form::label('title', 'Title:', ['class' => 'span_required']) !!}
+    {!! Form::text('title', null, ['class' => 'form-control',]) !!}
+    {!! Form::label('title', 'Title:', ['class' => 'span_requiredss']) !!}
 
 </div>
 
@@ -62,8 +62,8 @@
 <!-- Image Url Field -->
 <div class="form-group  col-sm-4 ">
 
-    {!! Form::text('image_url', null, ['class' => 'form-control', 'required']) !!}
-    {!! Form::label('image_url', 'Photo Gallery URL:', ['class' => 'span_required']) !!}
+    {!! Form::text('image_url', null, ['class' => 'form-control',]) !!}
+    {!! Form::label('image_url', 'Photo Gallery URL:', ['class' => 'span_requiredss']) !!}
 
 </div>
 

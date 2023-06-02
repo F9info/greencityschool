@@ -9,8 +9,8 @@
 <!-- Title Field -->
 <div class="form-group col-sm-4">
 
-    {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
-    {!! Form::label('title', 'Title:', ['class' => 'span_required']) !!}
+    {!! Form::text('title', null, ['class' => 'form-control',]) !!}
+    {!! Form::label('title', 'Title:', ['class' => 'span_required1']) !!}
 
 </div>
 
@@ -25,6 +25,6 @@
 <!-- Description Field -->
 <div class="form-group col-sm-12 col-lg-12">
 
-    {!! Form::textarea('description', null, ['class' => 'form-control', 'required']) !!}
+    {!! Form::textarea('description', null, ['class' => 'form-control',]) !!}
     {!! Form::label('description', 'Description:') !!}
 </div>
