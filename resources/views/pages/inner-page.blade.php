@@ -206,14 +206,23 @@
                                         <div class="grid-item ">
                                             <figure><img src="{{ asset('images/gallery/' . $gallery->image) }}"
                                                     alt="{{ $gallery->title }}"></figure>
+                                        
+                                                    @if ($gallery->image_url != '')
+
                                             <div class="gallery-buttons">
                                                 <a title="{{ $gallery->title }}" data-lightbox="gallery-image"
                                                     href="{{ asset('images/gallery/' . $gallery->image) }}"><i
                                                         class="icon-maximize"></i></a>
-                                                @if ($gallery->image_url != '')
+                                               
                                                     <a href="{{ $gallery->image_url }}"><i class="icon-link"></i></a>
-                                                @endif
+                                              
                                             </div>
+
+                                            @else
+                                            <a class="full-link" title="{{ $gallery->title }}" data-lightbox="gallery-image"
+                                                href="{{ asset('images/gallery/' . $gallery->image) }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+
+                                            @endif
                                         </div>
                                     @endforeach
                                 </div>
