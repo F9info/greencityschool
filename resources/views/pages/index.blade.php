@@ -232,8 +232,11 @@
             <div class="row">
                 <div class="col-lg-6 no-padding">
                     <div class="post-video">
-                        <iframe width="100%" height="609px" src="https://www.youtube.com/embed/dA8Smj5tZOQ"
+                        <iframe width="100%" height="609px" src="{{ applicationSettings('home-page-video-url') }}"
                             frameborder="0" allowfullscreen></iframe>
+
+                            
+                          
                     </div>
                 </div>
                 <div class="col-lg-6 background-image-overflow"
