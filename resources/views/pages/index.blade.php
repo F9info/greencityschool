@@ -235,8 +235,9 @@
                         <iframe width="100%" height="609px" src="{{ applicationSettings('home-page-video-url') }}"
                             frameborder="0" allowfullscreen></iframe>
 
+
+
                             
-                          
                     </div>
                 </div>
                 <div class="col-lg-6 background-image-overflow"
