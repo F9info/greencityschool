@@ -277,4 +277,6 @@ padding: 8px 0 0px 0;
 
   .contact_right  .list-icon li i{position: absolute; left: 0; top:8px;}
 
- 
+ .photo-gallery .grid-item  .full-link{position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: none !important; color: #ffffff !important;}
+ .photo-gallery  .full-link i{position: absolute; left: 43%; top: 40%;}
+ .photo-gallery .grid-item:hover  .full-link{display: block !important;}

@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\File;
 
 class MediaController extends Controller
 {
-    public function media(){
+    public function media()
+    {
         $files = File::files(public_path('images/media'));
 
         return view('media', compact('files'));
@@ -17,7 +18,7 @@ class MediaController extends Controller
     {
         if ($request->hasfile('image')) {
             foreach ($request->file('image') as $image) {
-                uploadImage($image, 'images/media/', null, null);
+                uploadMedia($image, 'images/media/');
             }
         }
         Flash::success('Images uploaded successfull');

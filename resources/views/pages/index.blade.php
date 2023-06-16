@@ -232,8 +232,12 @@
             <div class="row">
                 <div class="col-lg-6 no-padding">
                     <div class="post-video">
-                        <iframe width="100%" height="609px" src="https://www.youtube.com/embed/dA8Smj5tZOQ"
+                        <iframe width="100%" height="609px" src="{{ applicationSettings('home-page-video-url') }}"
                             frameborder="0" allowfullscreen></iframe>
+
+
+
+                            
                     </div>
                 </div>
                 <div class="col-lg-6 background-image-overflow"
@@ -241,31 +245,19 @@
                     <h2 class="page-titile h1 text-light">What People Say</h2>
                     <div class="single-slider  text-light">
                         <div class="item">
-                            <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia
-                                faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat
-                                magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi
-                                diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel
-                                dolor.</div>
-                            <h5>Author</h5>
-                            <h6>Beautiful nature</h6>
+                            <div class="des">I am incredibly impressed with the quality of education my child receives at your school. The teachers are dedicated, supportive, and create a stimulating learning environment that has greatly contributed to my child's academic and personal growth.</div>
+                            <h5>Srinivas Rao</h5>
+                            
                         </div>
                         <div class="item">
-                            <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia
-                                faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat
-                                magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi
-                                diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel
-                                dolor.</div>
-                            <h5>Author</h5>
-                            <h6>Beautiful nature</h6>
+                            <div class="des">Attending your school was a transformative experience for me. The challenging curriculum, coupled with the nurturing atmosphere, helped me develop essential skills, build lifelong friendships, and set a solid foundation for my future success.</div>
+                            <h5>Lakshmi Devi</h5>
+                            
                         </div>
                         <div class="item">
-                            <div class="des">The most happiest time of the day!. Morbi sagittis, sem quis lacinia
-                                faucibus, orci ipsum gravida tortor, vel interdum mi sapien ut justo. Nulla varius consequat
-                                magna, id molestie ipsum volutpat quis. A true story, that never been told!. Fusce id mi
-                                diam, non ornare orci. Pellentesque ipsum erat, facilisis ut venenatis eu, sodales vel
-                                dolor.</div>
-                            <h5>Author</h5>
-                            <h6>Beautiful nature</h6>
+                            <div class="des">Choosing your school for my child was the best decision I made. The innovative teaching methods, emphasis on holistic development, and inclusive community have created a positive and enriching educational journey for my child.</div>
+                            <h5>Prasad Kumar</h5>
+                            
                         </div>
                     </div>
                 </div>
@@ -289,14 +281,29 @@
                                         <div class="grid-item ">
                                             <figure><img src="{{ asset('images/gallery/' . $gallery->image) }}"
                                                     alt="{{ $gallery->title }}"></figure>
+                                            
+                                            
+                                                    @if ($gallery->image_url != '')
+
                                             <div class="gallery-buttons">
                                                 <a title="{{ $gallery->title }}" data-lightbox="gallery-image"
                                                     href="{{ asset('images/gallery/' . $gallery->image) }}"><i
                                                         class="icon-maximize"></i></a>
-                                                @if ($gallery->image_url != '')
+                                               
                                                     <a href="{{ $gallery->image_url }}"><i class="icon-link"></i></a>
-                                                @endif
+                                              
                                             </div>
+
+                                            @else
+                                            <a class="full-link" title="{{ $gallery->title }}" data-lightbox="gallery-image"
+                                                href="{{ asset('images/gallery/' . $gallery->image) }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+
+                                            @endif
+
+
+
+
+
                                         </div>
                                     @endforeach
                                 </div>
