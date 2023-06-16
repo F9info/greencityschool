@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\ApplicationSetting;
 use App\Models\Category;
 use App\Models\Admin;
@@ -16,6 +17,7 @@ use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\Transaction;
 use Carbon\Carbon;
+
 function unique_code($limit)
 {
     return substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, $limit);
@@ -36,6 +38,28 @@ if (!function_exists("uploadImage")) {
         }
     }
 }
+
+function getOnlyNameFromImage($image)
+{
+    $name = $image->getClientOriginalName();
+
+    $filename = pathinfo($name, PATHINFO_FILENAME);
+
+    return str_replace(' ', '-', $filename);
+}
+
+if (!function_exists("uploadMedia")) {
+
+    function uploadMedia($image, $path)
+    {
+        if ($image != '') {
+            $name = getOnlyNameFromImage($image) . '_' . unique_code(9) . '.' . $image->extension();
+            $image->move(public_path($path), $name);
+            return $name;
+        }
+    }
+}
+
 if (!function_exists("removeImage")) {
     function removeImage($image, $path)
     {
