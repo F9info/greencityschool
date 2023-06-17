@@ -43,13 +43,15 @@
                     <ul class="list-icon">
                         <li><i class="fa fa-map-marker-alt"></i> {!! applicationSettings('address') !!}</li>
                         <li><i class="fa fa-phone"></i> <a
-                                href="mailto:{{ applicationSettings('primary-phone-number') }}">{{ applicationSettings('primary-phone-number') }}</a>
+                                href="tel:{{ applicationSettings('primary-phone-number') }}">{{ applicationSettings('primary-phone-number') }}</a>
                         </li>
                         <li><i class="far fa-envelope"></i> <a
-                                href="tel:{{ applicationSettings('primary-email') }}">{{ applicationSettings('primary-email') }}</a>
+                                href="mailto:{{ applicationSettings('primary-email') }}">{{ applicationSettings('primary-email') }}</a>
                         </li>
                     </ul>
                     <div class="iframe-container">
+                     
+
                         {!! applicationSettings('google-map-iframe') !!}
                     </div>
                 </div>
