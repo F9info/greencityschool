@@ -42,11 +42,13 @@
         </section>
     @endif
     @if ($page->slug == 'vpl-education-society' && $trustees != null)
+
+    @if ($trustees != '' && $trustees->count() > 0)
         <section class="trustees background-primary text-center">
             <div class="container">
                 <h2 class="h1 text-light m-b-50">Trustees of the society</h2>
                 <div class="row team-members team-members-shadow m-b-40">
-                    @if ($trustees != '' && $trustees->count() > 0)
+               
                         @foreach ($trustees as $trustee)
                             <div class="col-lg-4">
                                 <div class="team-member">
@@ -61,11 +63,14 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endif
+                
                 </div>
-                <a href="#" class="btn btn-light btn-lg">View More Trustees</a>
+              
             </div>
         </section>
+        @endif
+
+
         <section class="why-choose-us no-padding">
             <div class="inner  background-image text-light text-center"
                 style="background-image:url('{{ asset('images/site-images/' . applicationSettings('why-choose-us-banner')) }}');">

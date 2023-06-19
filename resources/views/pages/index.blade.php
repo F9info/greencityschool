@@ -107,27 +107,16 @@
                 <div class="calendar-item">
                     <h2 class="h1 m-b-70">Calender</h2>
                     <div class="row">
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <div class="calender-list">
-                                <h3>List of 2023 Events</h3>
+                                <h3>Events</h3>
                                 <ul>
-                                    <li><a href="#">Cultural Fest</a></li>
-                                    <li><a href="#">Science Exhibition</a></li>
-                                    <li><a href="#">Creative Writing and Reading</a></li>
-                                    <li><a href="#">Fancy Dress</a></li>
-                                    <li><a href="#">Quiz Competition</a></li>
-                                    <li><a href="#">Celebrating Festivals</a></li>
-                                    <li><a href="#">Planting activities</a></li>
-                                    <li><a href="#">Painting</a></li>
-                                    <li><a href="#">Annual day celebration</a></li>
-                                    <li><a href="#">Picnic</a></li>
-                                    <li><a href="#">Sports day</a></li>
-                                    <li><a href="#">Visiting Museums and Monuments</a></li>
-                                    <li><a href="#">Treasure hunt</a></li>
+                                    <li>No Events</li>
+                                   
                                 </ul>
                             </div>
-                        </div>
-                        <div class="col-md-8">
+                        </div> --}}
+                        <div class="col-md-12">
                             <div id="calendar"></div>
                         </div>
                     </div>
@@ -321,7 +310,7 @@
     <script src='{{ asset('frontend/js/fullcalendar/jquery-ui.min.js') }}'></script>
     <script src='{{ asset('frontend/js/fullcalendar/moment.min.js') }}'></script>
     <script src='{{ asset('frontend/js/fullcalendar/fullcalendar.min.js') }}'></script>
-    <script>
+12a    <script>
         $calendar = $('#calendar');
         today = new Date();
         y = today.getFullYear();
@@ -382,52 +371,7 @@
             editable: true,
             eventLimit: true, // allow "more" link when too many events
             // color classes: [ event-blue | event-azure | event-green | event-orange | event-red ]
-            events: [{
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1),
-                    className: 'event-default'
-                },
-                {
-                    title: 'Meeting',
-                    start: new Date(y, m, d - 1, 10, 30),
-                    allDay: false,
-                    className: 'event-green'
-                },
-                {
-                    title: 'Lunch',
-                    start: new Date(y, m, d + 7, 12, 0),
-                    end: new Date(y, m, d + 7, 14, 0),
-                    allDay: false,
-                    className: 'event-red'
-                },
-                {
-                    title: 'Nud-pro Launch',
-                    start: new Date(y, m, d - 2, 12, 0),
-                    allDay: true,
-                    className: 'event-azure'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d + 1, 19, 0),
-                    end: new Date(y, m, d + 1, 22, 30),
-                    allDay: false,
-                    className: 'event-azure'
-                },
-                {
-                    title: 'Click for Creative Tim',
-                    start: new Date(y, m, 21),
-                    end: new Date(y, m, 22),
-                    url: 'https://www.creative-tim.com',
-                    className: 'event-orange'
-                },
-                {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 21),
-                    end: new Date(y, m, 22),
-                    url: 'https://www.creative-tim.com',
-                    className: 'event-orange'
-                }
-            ]
+         
         });
     </script>
 @endpush
