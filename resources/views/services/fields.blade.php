@@ -197,8 +197,15 @@
     {!! Form::label('seo_description', 'Seo Description:') !!}
 </div>
 
+@include('common.editor', ['variable' => 'editor1', 'field' => 'short_description'])
 
-@push('page_scripts')
+@include('common.editor', ['variable' => 'editor1', 'field' => 'description'])
+
+@include('common.editor', ['variable' => 'editor1', 'field' => 'seo_description'])
+
+
+
+{{-- @push('page_scripts')
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     <script>
         var editor1 = CKEDITOR.replace('short_description');
@@ -213,4 +220,4 @@
 
 
     </script>
-@endpush
+@endpush --}}

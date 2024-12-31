@@ -38,6 +38,10 @@
     <!-- Sweet Alert JS -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.2.0/tinymce.min.js"
+        integrity="sha512-E2dqytT185qVoAL0sfqr39BLHEBQtmZze59ChMjYi4vRUW6BzIBLZAqErdQAAAJX8bkFq2kQgQL9Lbpm8Uuw0Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body
     class="hold-transition sidebar-mini light-mode sidebar-collapse layout-fixed layout-navbar-fixed layout-footer-fixed">

@@ -207,13 +207,9 @@
 
 @include('common.string-to-slug', ['fieldName' => 'title'])
 
-@push('page_scripts')
-    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-    <script>
-        var editor1 = CKEDITOR.replace('content');
-        editor1.config.allowedContent = true;
-    </script>
+@include('common.editor', ['variable' => 'editor1', 'field' => 'content'])
 
+@push('page_scripts')
     <script type="text/javascript">
         function pagetype(type) {
             if (type == 'pageview') {

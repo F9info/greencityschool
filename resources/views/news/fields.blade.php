@@ -36,11 +36,5 @@
 
 </div>
 
-@push('page_scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-    <script>
-        var editor1 = CKEDITOR.replace('description');
-        editor1.config.allowedContent = true;
-    </script>
-@endpush
+@include('common.editor', ['variable' => 'editor1', 'field' => 'description'])
+

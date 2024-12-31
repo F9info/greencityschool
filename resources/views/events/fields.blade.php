@@ -558,15 +558,20 @@
 
 @include('common.string-to-slug', ['fieldName' => 'event_name'])
 
+@include('common.editor', ['variable' => 'editor1', 'field' => 'event_description'])
+
+@include('common.editor', ['variable' => 'editor1', 'field' => 'registration_note'])
+
+
 @push('page_scripts')
-    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    {{-- <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     <script>
         var editor1 = CKEDITOR.replace('event_description');
         editor1.config.allowedContent = true;
 
         var editor2 = CKEDITOR.replace('registration_note');
         editor2.config.allowedContent = true;
-    </script>
+    </script> --}}
     <script type="text/javascript">
         $('.datetimepicker-input').datetimepicker({
             format: 'YYYY-MM-DD hh:mm A',
