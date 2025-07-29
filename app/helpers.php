@@ -14,6 +14,9 @@ use App\Models\PaymentMethod;
 use App\Models\SponsorCategory;
 use App\Models\Sponsor;
 use App\Models\Service;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
 use App\Models\ServiceCategory;
 use App\Models\Transaction;
 use Carbon\Carbon;
@@ -53,7 +56,7 @@ if (!function_exists("uploadMedia")) {
     function uploadMedia($image, $path)
     {
         if ($image != '') {
-            $name = getOnlyNameFromImage($image) . '_' . unique_code(9) . '.' . $image->extension();
+            $name = getOnlyNameFromImage($image) . '.' . $image->extension();
             $image->move(public_path($path), $name);
             return $name;
         }
