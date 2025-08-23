@@ -477,6 +477,17 @@
   .trustees .team-members .team-member .team-image figure {
     height: auto;
   }
+
+
+  .all-events .nav-tabs .nav-link{font-size: 11px; padding: 5px;}
+
+
+  .all-events-page .inner_pages .event_list_page {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
 }
 @media all and (max-width: 768px) {
 
