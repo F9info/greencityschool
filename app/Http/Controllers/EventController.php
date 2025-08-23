@@ -110,6 +110,13 @@ class EventController extends AppBaseController
             $additional_fields['field_2']['field_options'] = $request->additional_field2_options;
         }
         $event->additional_fields = $additional_fields;
+
+        if ($request->hasfile('event_gallery')) {
+            foreach ($request->file('event_gallery') as $image) {
+                $data[] = uploadImage($image, 'images/events/', null, null);
+            }
+            $event->event_gallery = $data;
+        }
         $event->save();
 
         Flash::success('Event added successfully.');
@@ -192,6 +199,13 @@ class EventController extends AppBaseController
             $additional_fields['field_2']['field_options'] = $request->additional_field2_options;
         }
         $event->additional_fields = $additional_fields;
+
+        if ($request->hasfile('event_gallery')) {
+            foreach ($request->file('event_gallery') as $image) {
+                $data[] = uploadImage($image, 'images/events/', null, null);
+            }
+            $event->event_gallery = $data;
+        }
         $event->save();
 
         Flash::success('Event updated successfully.');

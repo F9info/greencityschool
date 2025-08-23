@@ -1025,3 +1025,6 @@ background-color: #e9ecef !important;
   z-index: 9 !important;
   font-weight: 700;
 }
+.layout-footer-fixed .wrapper .main-footer, .main-footer{
+  position: relative !important;
+}

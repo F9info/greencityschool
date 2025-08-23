@@ -1559,4 +1559,6 @@ a.btn:not([href]):not([tabindex]).disabled {
     color: #181818;
     margin-bottom: 0;}
     #statsForm .btn{    padding: 15px 25px 15px 25px;}
-  
+    .layout-footer-fixed .wrapper .main-footer, .main-footer{
+      position: relative !important;
+    }

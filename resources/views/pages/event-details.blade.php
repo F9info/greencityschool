@@ -21,9 +21,22 @@
                         <div class="col-md-7 pic">
                             <figure><img width="100%" alt="{{ $event->event_name }}"
                                     src="{{ asset('images/events/' . $event->image) }}"></figure>
-                            <div class="description">
-                                <h3 class="subtilte">About the event:</h3>
-                                {!! $event->event_description !!}
+                            <div class="event-gallery">
+                                <h3 class="subtilte">Event Gallery:</h3>
+                                @php $galleryImages = is_array($event->event_gallery) ? $event->event_gallery : []; @endphp
+                                @if (!empty($galleryImages))
+                                    <div class="grid-layout grid-3-columns" data-item="grid-item" data-margin="30" data-lightbox="gallery">
+                                        @foreach ($galleryImages as $gal)
+                                            @if (!empty($gal))
+                                                <div class="grid-item ">
+                                                    <figure class="fig_pic"><img class="w-100" src="{{ asset('images/events/' . $gal) }}" alt="{{ $event->event_name }}">
+                                                    <a class="full-link" title="{{ $event->event_name }}" data-lightbox="gallery-image" href="{{ asset('images/events/' . $gal) }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                    </figure>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-5 text">
@@ -40,26 +53,13 @@
                                     </span>
                                     {{ date('D d M Y', strtotime($event->start_date)) . ' to ' . date('D d M Y', strtotime($event->end_date)) }}
                                 </li>
-                                <li><span class="material-symbols-outlined">
-                                        location_on
-                                    </span> {{ $event->location }}</li>
-                                <li><span class="material-symbols-outlined">
-                                        event_available
-                                    </span>Registration Start Date:
-                                    {{ date('D d M Y', strtotime($event->reg_start_date)) }}
-                                </li>
-                                <li><span class="material-symbols-outlined">
-                                        event_busy
-                                    </span>Registration End Date: {{ date('D d M Y', strtotime($event->reg_end_date)) }}
-                                </li>
+                               
                             </ul>
-                            @include('pages.event-register-btn', ['event', $event])
-                            @if ($event->registration_note != '')
-                            <div class="item">
-                                <h3 class="subtilte">Registration note:</h3>
-                                {!! $event->registration_note !!}
-                            </div>
-                        @endif
+                            {!! $event->event_description !!}
+
+
+
+
                         </div>
                     </div>
                     </div>

@@ -1,4 +1,9 @@
 @extends('frontend.app')
+@if ($page->slug == 'events')
+    @section('body_class', 'all-events-page')
+@else
+    @section('body_class', '')
+@endif
 @section('content')
     <!-- inner-banner -->
     <div class="inner-banner ">
@@ -292,6 +297,102 @@
                     @endforeach
                 </div>
             @endif
+
+
+            @if ($page->slug == 'events')
+
+
+<div class="all-events">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="allevents-tab" data-toggle="tab" href="#allevents" role="tab" aria-controls="allevents" aria-selected="true">All Events</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="upcomingevents-tab" data-toggle="tab" href="#upcomingevents" role="tab" aria-controls="upcomingevents" aria-selected="false">Upcoming Events</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="ongoingevents-tab" data-toggle="tab" href="#ongoingevents" role="tab" aria-controls="ongoingevents" aria-selected="false">Ongoing Events</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="pastevents-tab" data-toggle="tab" href="#pastevents" role="tab" aria-controls="pastevents" aria-selected="false">Past Events</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="allevents" role="tabpanel" aria-labelledby="allevents-tab">
+  @php
+      $allEvents = collect();
+      if (isset($upcomingEvents)) { $allEvents = $allEvents->concat($upcomingEvents); }
+      if (isset($ongoingEvents)) { $allEvents = $allEvents->concat($ongoingEvents); }
+      if (isset($pastEvents)) { $allEvents = $allEvents->concat($pastEvents); }
+  @endphp
+  @if ($allEvents->count() > 0)
+                    <div class="row">
+                        @foreach ($allEvents as $event)
+                            @include('pages.events-list-display', ['event' => $event])
+                        @endforeach
+                    </div>
+                @else
+                    <h4 class="no_message">No Events Found</h4>
+                @endif
+  </div>
+  <div class="tab-pane fade" id="upcomingevents" role="tabpanel" aria-labelledby="upcomingevents-tab">
+  @if ($upcomingEvents->count() > 0)
+                    <div class="row">
+                        @foreach ($upcomingEvents as $upcomingEvent)
+                            @include('pages.events-list-display', ['event' => $upcomingEvent])
+                        @endforeach
+                    </div>
+                @else
+                    <h4 class="no_message">No Latest Events Found</h4>
+                @endif
+  </div>
+  <div class="tab-pane fade" id="ongoingevents" role="tabpanel" aria-labelledby="ongoingevents-tab">
+  @if ($ongoingEvents->count() > 0)
+                    <div class="row events_no_button">
+                        @foreach ($ongoingEvents as $ongoingEvent)
+                            @include('pages.events-list-display', ['event' => $ongoingEvent])
+                        @endforeach
+                    </div>
+                @else
+                    <h4 class="no_message">No Ongoing Events Found</h4>
+                @endif
+  </div>
+  <div class="tab-pane fade" id="pastevents" role="tabpanel" aria-labelledby="pastevents-tab">
+  @if ($pastEvents->count() > 0)
+                    <div class="row events_no_button">
+                        @foreach ($pastEvents as $pastEvent)
+                            @include('pages.events-list-display', ['event' => $pastEvent])
+                        @endforeach
+                    </div>
+                @else
+                    <h4 class="no_message">No Past Events Found</h4>
+                @endif
+  </div>
+</div>
+
+            
+               
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+            @endif
+
+
+
+
+
+
+
             @if ($page->slug == 'latest-events')
                 @if ($upcomingEvents->count() > 0)
                     <div class="row">

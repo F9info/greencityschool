@@ -42,7 +42,8 @@ class Event extends Model
         'page_title',
         'meta_description',
         'meta_keywords',
-        'top_line'
+        'top_line',
+        'event_gallery'
     ];
 
     protected $casts = [
@@ -69,20 +70,14 @@ class Event extends Model
         'page_title' => 'string',
         'meta_description' => 'string',
         'meta_keywords' => 'string',
-        'top_line' => 'string'
+        'top_line' => 'string',
+        'event_gallery' => 'array',
     ];
 
     public static $rules = [
         'event_name' => 'required',
         'slug' => 'required',
         'event_category_id' => 'required',
-        'start_date' => 'required',
-        'end_date' => 'required',
-        'location' => 'required',
-        'contact_email' => 'required',
-        'reg_start_date' => 'required',
-        'reg_end_date' => 'required',
-        'event_description' => 'required'
     ];
 
     public function eventCategory()

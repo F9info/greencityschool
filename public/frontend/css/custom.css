@@ -280,3 +280,12 @@ padding: 8px 0 0px 0;
  .photo-gallery .grid-item  .full-link{position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: none !important; color: #ffffff !important;}
  .photo-gallery  .full-link i{position: absolute; left: 43%; top: 40%;}
  .photo-gallery .grid-item:hover  .full-link{display: block !important;}
+
+ .event-gallery{padding: 30px;}
+ .event-gallery .fig_pic{width: 100%; height: 200px; overflow: hidden; position: relative;}
+ .event-gallery .fig_pic img{width: 100%; height: 100%; object-fit: cover; object-position: top center;}
+ .event-gallery .grid-item{position: relative; overflow: hidden;}
+ .event-gallery .grid-item  .full-link{position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5);}
+ .event-gallery .grid-item  .full-link i{position: absolute; left: 43%; top: 43%; z-index: 9; color: #ffffff;}
+
+ .all-events-page .inner-page-content{display:none !important;}

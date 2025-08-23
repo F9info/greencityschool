@@ -29,7 +29,7 @@
     @yield('page_styles')
 </head>
 
-<body>
+<body class="@yield('body_class')">
     <!-- Body Inner -->
     <div class="body-inner">
         <!-- Header -->

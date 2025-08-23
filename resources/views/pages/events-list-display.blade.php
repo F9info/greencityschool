@@ -10,7 +10,7 @@
             <div class="description-events">
                 <h2><a href="{{ url('event/' . $event->slug) }}">{{ $event->event_name }}</a></h2>
                 <div class="disc">
-                    {!! \Illuminate\Support\Str::limit(strip_tags($event->event_description), $limit = 120, $end = '...') !!}
+                    {!! \Illuminate\Support\Str::limit(strip_tags($event->event_description), $limit = 300, $end = '...') !!}
                 </div>
                 <div class="date_event no-need-remove">
                     <span class="material-symbols-outlined">

@@ -91,10 +91,9 @@
                 'id' => 'start_date',
                 'placeholder' => 'Start Date',
                 'data-toggle' => 'datetimepicker',
-                'required',
                 'readonly',
                 'maxlength' => '19',
-                'data-parsley-error-message' => 'Select date and time',
+              
             ]) !!}
             {!! Form::label('start_date', 'Start Date:') !!}
         </div>
@@ -106,9 +105,7 @@
                 'placeholder' => 'End Date',
                 'id' => 'end_date',
                 'data-toggle' => 'datetimepicker',
-                'required',
                 'maxlength' => '19',
-                'data-parsley-error-message' => 'Select date and time',
             ]) !!}
             {!! Form::label('end_date', 'End Date:') !!}
         </div>
@@ -116,10 +113,8 @@
         <div class="form-group col-sm-4">
             {!! Form::text('location', null, [
                 'class' => 'form-control text-input',
-                'required',
-                'data-parsley-error-message' => 'Enter event location',
             ]) !!}
-            {!! Form::label('location', 'Location:', ['class' => 'span_required']) !!}
+            {!! Form::label('location', 'Location:') !!}
         </div>
         <!-- City Field -->
         <div class="letters-input form-group col-sm-4">
@@ -141,312 +136,33 @@
             {!! Form::label('zipcode', 'Zipcode:') !!}
         </div>
         <!-- Contact Email Field -->
-        <div class="form-group col-sm-4">
-            {!! Form::email('contact_email', null, [
-                'class' => 'form-control',
-                'required',
-                'data-parsley-error-message' => 'Enter valid email address',
-            ]) !!}
-            {!! Form::label('contact_email', 'Contact Email:', ['class' => 'span_required']) !!}
-        </div>
-        <!-- Member Only Field -->
-        <div class="form-group  col-sm-4">
-            <div class="checkbox checkbox_toggle">
-                <input type="checkbox" name="members_only" id="members_only"
-                    {{ isset($event) ? ($event->members_only ? 'checked' : '') : '' }}>
-                <label for="members_only">Member Only</label>
-            </div>
-        </div>
+        <div class="form-group image_input col-sm-6">
 
+<div class="input-group">
+    <div class="custom-file">
+        {!! Form::file('event_gallery[]', ['class' => 'custom-file-input', 'multiple' => true]) !!}
+        {!! Form::label('event_gallery', 'Choose file', ['class' => 'custom-file-label']) !!}
     </div>
 </div>
-<!-- Card title -->
-<div class="col-sm-12 row form_heading" style="margin-top: 20px; margin-bottom:10px;">
-    <div class="col-md-6">
-        <h2>
-            <span class="material-symbols-outlined">
-                calendar_month
-            </span>
-            Additional Field
-        </h2>
-    </div>
-    <div class="col-md-6 text-right">
-        <p>(Please fill additional fields)</p>
-    </div>
+{!! Form::label('event_gallery', 'Event Gallery:') !!}
+<span class="image_note">[ Upload multiple images ]</span>
+@isset($event)
+    @if ($event->event_gallery != '')
+        <p class="welcome-image">
+            @foreach ($event->event_gallery as $gal)
+                @if ($gal != null)
+                    <span>
+                        <a href="{{ url('delete-event-image/' . $event->id . '/' . $gal) }}"
+                            class="remove_field">X</a>
+                        <img src="{{ asset('images/events/' . $gal) }}" alt=""
+                            height="50">
+                    </span>
+                @endif
+            @endforeach
+        </p>
+    @endif
+@endisset
 </div>
-<!-- Card title end -->
-<!-- Card -->
-<div class="card col-sm-12">
-    <div class="card-body row">
-        {{-- Additonal Field Name --}}
-        <div class="form-group col-sm-6">
-            {!! Form::text(
-                'additional_field1_name',
-                isset($event)
-                    ? (isset($event->additional_fields['field_1'])
-                        ? $event->additional_fields['field_1']['field_name']
-                        : null)
-                    : null,
-                ['class' => 'form-control '],
-            ) !!}
-            {!! Form::label('additional_field1_name', 'Additional Field1 Name:') !!}
-        </div>
-        <!-- Additional Fields Field -->
-        <div class="form-group select-area col-sm-6">
-            {!! Form::select(
-                'additional_field1_type',
-                ['textbox' => 'textbox', 'textarea' => 'textarea', 'select' => 'select'],
-                isset($event)
-                    ? (isset($event->additional_fields['field_1'])
-                        ? $event->additional_fields['field_1']['field_type']
-                        : null)
-                    : null,
-                ['class' => 'form-control select2', 'id' => 'additional_field1_type', 'placeholder' => 'Field type'],
-            ) !!}
-            {!! Form::label('additional_field1_type', 'Additional Field1 Field Type:') !!}
-        </div>
-        <!-- Options Field -->
-        <div class="form-group col-sm-6 options_block1"
-            style="{{ isset($event) ? (isset($event->additional_fields['field_1']) ? ($event->additional_fields['field_1']['field_type'] == 'select' ? 'display: block;' : 'display: none;') : 'display: none;') : 'display: none;' }}">
-            {!! Form::textarea(
-                'additional_field1_options',
-                isset($event)
-                    ? (isset($event->additional_fields['field_1'])
-                        ? $event->additional_fields['field_1']['field_options']
-                        : null)
-                    : null,
-                [
-                    'class' => 'form-control',
-                    'id' => 'additional_field1_options',
-                ],
-            ) !!}
-            {!! Form::label('additional_field1_options', 'Options:', ['class' => 'span_required']) !!}
-            <p>*Please insert values with comma(,) separated</p>
-
-        </div>
-    </div>
-    <div class="card-body row">
-        {{-- Additonal Field Name --}}
-        <div class="form-group col-sm-6">
-            {!! Form::text(
-                'additional_field2_name',
-                isset($event)
-                    ? (isset($event->additional_fields['field_2'])
-                        ? $event->additional_fields['field_2']['field_name']
-                        : null)
-                    : null,
-                ['class' => 'form-control '],
-            ) !!}
-            {!! Form::label('additional_field2_name', 'Additional Field2 Name:') !!}
-        </div>
-        <!-- Additional Fields Field -->
-        <div class="form-group select-area col-sm-6">
-            {!! Form::select(
-                'additional_field2_type',
-                ['textbox' => 'textbox', 'textarea' => 'textarea', 'select' => 'select'],
-                isset($event)
-                    ? (isset($event->additional_fields['field_2'])
-                        ? $event->additional_fields['field_2']['field_type']
-                        : null)
-                    : null,
-                ['class' => 'form-control select2', 'id' => 'additional_field2_type', 'placeholder' => 'Field type'],
-            ) !!}
-            {!! Form::label('additional_field2_type', 'Additional Field2 Field Type:') !!}
-        </div>
-        <!-- Options Field -->
-        <div class="form-group col-sm-4 options_block2"
-            style="{{ isset($event) ? (isset($event->additional_fields['field_2']) ? ($event->additional_fields['field_2']['field_type'] == 'select' ? 'display: block;' : 'display: none;') : 'display: none;') : 'display: none;' }}">
-            {!! Form::textarea(
-                'additional_field2_options',
-                isset($event)
-                    ? (isset($event->additional_fields['field_2'])
-                        ? $event->additional_fields['field_2']['field_options']
-                        : null)
-                    : null,
-                [
-                    'class' => 'form-control',
-                    'id' => 'additional_field2_options',
-                ],
-            ) !!}
-            {!! Form::label('additional_field2_options', 'Options:', ['class' => 'span_required']) !!}
-            <p>*Please insert values with comma(,) separated</p>
-
-        </div>
-    </div>
-</div>
-<!-- Card title -->
-<div class="col-sm-12 row form_heading" style="margin-top: 20px; margin-bottom:10px;">
-    <div class="col-md-6">
-        <h2>
-            <span class="material-symbols-outlined">
-                calendar_month
-            </span>
-            Registrations Details
-        </h2>
-    </div>
-    <div class="col-md-6 text-right">
-        <p>(Please fill registrations details)</p>
-    </div>
-</div>
-<!-- Card title end -->
-<!-- Card -->
-<div class="card col-sm-12">
-    <div class="card-body row">
-        <div class="col-md-2 form-group">
-            <!-- Is Registration Enabled Field -->
-            <div class="checkbox_toggle">
-                <div class="checkbox">
-                    <input type="checkbox" name="registration_enabled" value="1" id="registration_enabled"
-                        {{ isset($event) ? ($event->registration_enabled ? 'checked' : '') : '' }}>
-                    <label for="registration_enabled">
-                        Is Registration Enabled
-                    </label>
-                </div>
-            </div>
-        </div>
-        <!-- Reg Start Date Field -->
-        <div class="form-group date_input_picker input_date_row col-md-4">
-            {!! Form::text('reg_start_date', null, [
-                'class' => 'form-control  datetimepicker-input',
-                'readonly',
-                'id' => 'reg_start_date',
-                'data-toggle' => 'datetimepicker',
-                'required',
-            ]) !!}
-            {!! Form::label('reg_start_date', 'Reg Start Date:') !!}
-        </div>
-        <!-- Reg End Date Field -->
-        <div class="form-group date_input_picker input_date_row col-md-4">
-
-            {!! Form::text('reg_end_date', null, [
-                'class' => 'form-control  datetimepicker-input',
-                'readonly',
-                'id' => 'reg_end_date',
-                'data-toggle' => 'datetimepicker',
-                'required',
-            ]) !!}
-            {!! Form::label('reg_end_date', 'Reg End Date:') !!}
-        </div>
-
-        <div class="col-md-12 clear-fix" style="width: 100%; height:1px;">&nbsp;</div>
-
-        <div class="col-md-2 form-group">
-            <!-- Is Adult Field -->
-            <div class="checkbox_toggle">
-                <div class="checkbox">
-                    <input type="checkbox" name="is_adult" value="1" id="is_adult"
-                        {{ isset($event) ? ($event->is_adult ? 'checked' : '') : '' }}>
-                    <label for="is_adult">
-                        Adult
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group col-md-4">
-            {!! Form::text('adult_amount', null, [
-                'class' => 'form-control numbers-input',
-                'minlength' => '1',
-                'maxlength' => '3',
-                'id' => 'adult_amount',
-                'disabled',
-            ]) !!}
-            {!! Form::label('adult_amount', 'Adult Amount:') !!}
-        </div>
-
-
-        <div class="col-md-2 form-group">
-            <!-- Is Child Field -->
-            <div class="checkbox_toggle">
-                <div class="checkbox">
-                    <input type="checkbox" name="is_child" value="1" id="is_child"
-                        {{ isset($event) ? ($event->is_child ? 'checked' : '') : '' }}>
-                    <label for="is_child">
-                        Child
-                    </label>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Child Amount Field -->
-        <div class="form-group col-md-4">
-
-            {!! Form::text('child_amount', null, [
-                'class' => 'form-control numbers-input',
-                'minlength' => '1',
-                'maxlength' => '3',
-                'id' => 'child_amount',
-                'disabled',
-            ]) !!}
-            {!! Form::label('child_amount', 'Child Amount:') !!}
-        </div>
-
-        <div class="col-md-12 clear-fix" style="width: 100%; height:1px;">&nbsp;</div>
-
-
-        <div class="col-md-2 form-group">
-
-            <!-- Is Guest Adult Field -->
-            <div class="checkbox_toggle">
-                <div class="checkbox">
-                    <input type="checkbox" name="is_guest_adult" value="1" id="is_guest_adult"
-                        {{ isset($event) ? ($event->is_guest_adult ? 'checked' : '') : '' }}>
-                    <label for="is_guest_adult">
-                        Guest Adult
-                    </label>
-                </div>
-            </div>
-
-
-        </div>
-
-
-
-        <div class="form-group col-md-4">
-
-            {!! Form::text('guest_adult_amount', null, [
-                'class' => 'form-control numbers-input',
-                'minlength' => '1',
-                'maxlength' => '3',
-                'id' => 'guest_adult_amount',
-                'disabled',
-            ]) !!}
-            {!! Form::label('guest_adult_amount', 'Guest Adult Amount:') !!}
-        </div>
-
-
-        <div class="col-md-2 form-group">
-
-            <!-- Is Guest Child Field -->
-            <div class="checkbox_toggle">
-                <div class="checkbox">
-                    <input type="checkbox" name="is_guest_child" value="1" id="is_guest_child"
-                        {{ isset($event) ? ($event->is_guest_child ? 'checked' : '') : '' }}>
-                    <label for="is_guest_child">
-                        Guest Child
-                    </label>
-                </div>
-            </div>
-
-        </div>
-
-
-        <!-- Guest Child Amount Field -->
-        <div class="form-group col-md-4">
-
-            {!! Form::text('guest_child_amount', null, [
-                'class' => 'form-control numbers-input',
-                'minlength' => '1',
-                'maxlength' => '3',
-                'id' => 'guest_child_amount',
-                'disabled',
-            ]) !!}
-            {!! Form::label('guest_child_amount', 'Guest Child Amount:') !!}
-        </div>
-
-
-
 
     </div>
 </div>
@@ -481,19 +197,15 @@
 
 
         <!-- Event Description Field -->
-        <div class="form-group textarea-section col-sm-6 col-lg-6">
+        <div class="form-group textarea-section col-sm-12 col-lg-12">
 
-            {!! Form::textarea('event_description', null, ['class' => 'form-control', 'required']) !!}
-            {!! Form::label('event_description', 'Event Description:', ['class' => 'span_required']) !!}
+            {!! Form::textarea('event_description', null, ['class' => 'form-control']) !!}
+            {!! Form::label('event_description', 'Event Description:') !!}
 
         </div>
 
         <!-- Registration Note Field -->
-        <div class="form-group textarea-section col-sm-6 col-lg-6">
-
-            {!! Form::textarea('registration_note', null, ['class' => 'form-control']) !!}
-            {!! Form::label('registration_note', 'Registration Note:') !!}
-        </div>
+      
     </div>
 </div>
 
