@@ -51,7 +51,7 @@
                                 <li><span class="material-symbols-outlined">
                                         event
                                     </span>
-                                    {{ date('D d M Y', strtotime($event->start_date)) . ' to ' . date('D d M Y', strtotime($event->end_date)) }}
+                                    {{ date('D d M Y', strtotime($event->start_date)) }}
                                 </li>
                                
                             </ul>
