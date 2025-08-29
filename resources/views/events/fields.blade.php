@@ -294,13 +294,7 @@
         });
         $('#start_date').datetimepicker();
         $('#end_date').datetimepicker();
-        $("#start_date").on("change.datetimepicker", function(e) {
-            $('#end_date').datetimepicker('minDate', e.date);
-        });
-        $("#end_date").on("change.datetimepicker", function(e) {
-            $('#reg_start_date').datetimepicker('maxDate', e.date);
-            $('#reg_end_date').datetimepicker('maxDate', e.date);
-        });
+
         $("#reg_start_date").on("change.datetimepicker", function(e) {
             $('#reg_end_date').datetimepicker('minDate', e.date);
         });

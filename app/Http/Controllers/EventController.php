@@ -83,12 +83,17 @@ class EventController extends AppBaseController
      */
     public function store(CreateEventRequest $request)
     {
+
+
         $input = $request->all();
+
 
         $event = $this->eventRepository->create($input);
         if ($request->hasfile('image')) {
             $event->image = uploadImage($request->file('image'), 'images/events/', null, null);
         }
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
         $event->members_only = $request->has('members_only') ? 1 : 0;
         $event->registration_enabled = $request->has('registration_enabled') ? 1 : 0;
         $event->is_guest_adult = $request->has('is_guest_adult') ? 1 : 0;

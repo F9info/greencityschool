@@ -10,7 +10,7 @@
                 <img src="{{ asset('images/site-images/' . applicationSettings('inner-banner')) }}"
                     alt="{!! applicationSettings('site-name') !!}">
             @endif
-        </figure>
+        </figure> 
     </div>
     <!-- end: Page title -->
     <section class="event_detail">
